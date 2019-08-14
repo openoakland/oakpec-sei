@@ -1,63 +1,25 @@
-## Netfile Connect2 Swagger API
+# Public Ethics Data Downloader [![CircleCI](https://circleci.com/gh/openoakland/oakpec-sei/tree/master.svg?style=svg)](https://circleci.com/gh/openoakland/oakpec-sei/tree/master) [![codecov](https://codecov.io/gh/openoakland/oakpec-sei/branch/master/graph/badge.svg)](https://codecov.io/gh/openoakland/oakpec-sei)
 
-### Endpoint to get list of all form IDs
-https://netfile.com:443/Connect2/api/public/list/form/types
+This repository contains scripts used to download ethics data for the [City of Oakland](https://www.oaklandca.gov/boards-commissions/public-ethics-commission).
 
-Takes no arguments
+We currently support retrieving the 2018-2019 [FPPC Form 700 Statement of Economic Interests](http://www2.oaklandnet.com/government/o/CityAdministration/d/PublicEthics/s/government-ethics/form-700/index.htm).
+The data is downloaded from [Netfile](https://netfile.com/Connect2/api/swagger-ui/#!/public/) and uploaded to a data 
+warehouse.
 
-Returns a list of forms and their IDs, as JSON, like
-```json
-{
-  "items": [
-    {
-      "id": 245,
-      "name": "FPPC 700",
-      "description": "FPPC Form 700 Statement of Economic Interests (2002-2003)"
-    }
-  ]
-}
-```
+## Development
+We use [`pipenv`](https://docs.pipenv.org/en/latest/) to manage environments and requirements, so install that first.
 
-### Endpoint to get a list of filings by form ID
-POST https://netfile.com:443/Connect2/api/public/list/filing
+1. Install the requirements for this project:
+    ```bash
+    make requirements
+    ```
 
-Takes body like
-```json
-{
-  "AID": "coak", // Oakland's unique name
-  "Application": "",
-  "CurrentPageIndex": "<int>",
-  "Form": "254", // id of Form 700 yrs 2018-2019
-  "PageSize": "<int>"
-}
-```
+2. Run code quality inspection:
+    ```bash
+    make quality
+    ```
 
-Returns a list of filings for the form ID, like
-```json
-{
-  "filings": [
-    {
-      "id": "182305528", // pass this to /public/efile/{filingID}
-      "agency": 13,
-      "isEfiled": true,
-      "hasImage": true,
-      "filingDate": "2019-08-12T17:20:55.0000000-07:00",
-      "title": "FPPC Form 700 (1/1/2018 - 12/31/2018)",
-      "form": 254,
-      "filerName": "Brooks, Desley",
-      "filerLocalId": "COAK-151463",
-      "filerStateId": "",
-      "amendmentSequenceNumber": 0,
-      "amendedFilingId": null
-    },
-  ],
-  "responseStatus": null,
-  "totalMatchingCount": 926,
-  "totalMatchingPages": 10
-}
-```
-
-### Endpoint to get a filing by filing ID
-GET https://netfile.com:443/Connect2/api/public/efile/{filingId}
-
-Returns zipped XML
+3. Run tests:
+    ```bash
+    make test
+    ```
