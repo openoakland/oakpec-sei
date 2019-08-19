@@ -1,0 +1,99 @@
+<disclosure agency="NetFile" type="netfile.render.fppc._2019.RenderableFppc700" version="1.0">
+  <current_page>0</current_page>
+  <hide_signature_names>false</hide_signature_names>
+  <show_blank_pages>false</show_blank_pages>
+  <show_draft>false</show_draft>
+  <show_redacted>true</show_redacted>
+  <report_year>2018</report_year>
+  <total_pages>1</total_pages>
+  <x_position />
+  <y_position />
+  <cover>
+    <first_name>Gregory</first_name>
+    <jurisdiction>
+      <description_city>Oakland</description_city>
+      <is_city>true</is_city>
+      <is_county>false</is_county>
+      <is_judge_or_court>false</is_judge_or_court>
+      <is_multi_county>false</is_multi_county>
+      <is_other>false</is_other>
+      <is_state>false</is_state>
+      <id>d7b3f0ce-224e-4f19-b685-06d3ad352159</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </jurisdiction>
+    <last_name>Qwan</last_name>
+    <offices count="1">
+      <office>
+        <agency>City of Oakland</agency>
+        <assuming_date>04/23/2018 00:00:00</assuming_date>
+        <division_board_district>84229 - Zoning</division_board_district>
+        <election_date />
+        <is_primary>true</is_primary>
+        <leaving_date />
+        <lowest_similarity>100</lowest_similarity>
+        <position>Planner II</position>
+        <source>0</source>
+        <id>f0c04ae3-e1c6-419c-88cf-f4d07675a9fe</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </office>
+    </offices>
+    <statement_type>
+      <annual_start_date />
+      <date_assumed>04/23/2018 00:00:00</date_assumed>
+      <is_annual>false</is_annual>
+      <is_assuming>true</is_assuming>
+      <is_candidate>false</is_candidate>
+      <is_leaving>false</is_leaving>
+      <leaving_left_office />
+      <leaving_start_date />
+      <candidate_election_date />
+      <id>6b9d8512-0834-44d6-b5b9-96b64eb86b8c</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </statement_type>
+    <verification>
+      <date_signed>02/27/2019 11:20:06</date_signed>
+      <mailing_address>
+        <city>Oakland</city>
+        <state>CA</state>
+        <zip>94612</zip>
+      </mailing_address>
+      <phone />
+      <signature>Gregory Qwan</signature>
+      <id>4b70f0af-465d-4e27-b667-f118259f4f83</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </verification>
+    <id>b6a88c27-fe61-47d6-bb9f-99f3673b5293</id>
+    <version_for_add>0</version_for_add>
+    <version_for_delete>0</version_for_delete>
+    <version_for_edit>0</version_for_edit>
+  </cover>
+  <form_tool_hash>1232783</form_tool_hash>
+  <has_loaded_offices_from_admin>true</has_loaded_offices_from_admin>
+  <schedule_a_1s count="0" />
+  <schedule_a_2s count="0" />
+  <schedule_bs count="0" />
+  <schedule_c_1s count="0" />
+  <schedule_c_2s count="0" />
+  <schedule_ds count="0" />
+  <schedule_es count="0" />
+  <e_filing_as_filing_of_record_allowed>true</e_filing_as_filing_of_record_allowed>
+  <filing_information>
+    <amendment_sequence_number>0</amendment_sequence_number>
+    <amendment_superceded_filing_date>01/01/0001</amendment_superceded_filing_date>
+    <creation_date>01/01/0001 00:00:00</creation_date>
+    <filer_id>COAK-154754</filer_id>
+    <filing_date>01/01/0001</filing_date>
+    <form_tool_hash>1232783</form_tool_hash>
+    <s_a_n>021300008-NFH-0008</s_a_n>
+    <software_name>NetFile Web SEI</software_name>
+    <software_version>2.0</software_version>
+  </filing_information>
+</disclosure>

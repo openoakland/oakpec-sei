@@ -32,21 +32,25 @@ def _parse_offices(filing: Form700Filing, xml_tree: ET.Element) -> List[Office]:
     office_elements = xml_tree.findall('cover/offices/office')
     offices = []
     for element in office_elements:
-        office = Office(
-            id=UUID(element.findtext('id')),
-            filing=filing,
-            agency=element.findtext('agency'),
-            division_board_district=element.findtext('division_board_district'),
-            position=element.findtext('position'),
-            is_primary=clean_boolean(element.findtext('is_primary')),
-            election_date=clean_datetime(element.findtext('election_date')),
-            assuming_date=clean_datetime(element.findtext('assuming_date')),
-            leaving_date=clean_datetime(element.findtext('leaving_date')),
-        )
-        offices.append(office)
+        office_id = UUID(element.findtext('id'))
+        office = Office.get_or_none(Office.id == office_id)
+        if not office:
+            office = Office(
+                id=office_id,
+                filing=filing,
+                agency=element.findtext('agency'),
+                division_board_district=element.findtext('division_board_district'),
+                position=element.findtext('position'),
+                is_primary=clean_boolean(element.findtext('is_primary')),
+                election_date=clean_datetime(element.findtext('election_date')),
+                assuming_date=clean_datetime(element.findtext('assuming_date')),
+                leaving_date=clean_datetime(element.findtext('leaving_date')),
+            )
+            offices.append(office)
     return offices
 
 
+# TODO Handle amendments
 def _parse_schedule_a1_attachments(filing: Form700Filing, xml_tree: ET.Element) -> List[ScheduleA1]:
     attachments = []
     elements = xml_tree.findall('schedule_a_1s/schedule_a_1')
@@ -83,6 +87,7 @@ def _save_models(instances: List[BaseModel]) -> None:
 
 
 def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
+    logger.info(f'Parsing Form 700 filing {filing_id}')
     xml_tree = ET.fromstring(raw_data)
     filing = Form700Filing(id=filing_id)
 
@@ -100,8 +105,10 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             _save_models([filing])
             _save_models(offices)
             _save_models(schedule_a1_attachments)
-            return filing
         except Exception:  # pylint: disable=broad-except
             transaction.rollback()
             logger.exception(f'Failed to parse filing {filing_id}!')
             raise
+
+    logger.info(f'Successfully parsed Form 700 filing {filing_id}')
+    return filing

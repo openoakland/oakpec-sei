@@ -3,8 +3,10 @@ import os
 import pytest
 import responses
 
-from ..client import FORM_TYPE, build_url, download_filing, get_filings
+from ..client import build_url, download_filing, get_filing_ids
 from ..errors import DownloadError
+
+FORM_TYPE = 254
 
 
 def test_build_url():
@@ -42,7 +44,7 @@ def test_get_filings():
     responses.add(responses.POST, url, json=page_1)
     responses.add(responses.POST, url, json={})
 
-    actual = get_filings(FORM_TYPE)
+    actual = get_filing_ids(FORM_TYPE)
     assert actual == {'2', '3', '4'}
 
 
@@ -51,13 +53,13 @@ def test_get_filings_error():
     responses.add(responses.POST, build_url('public/list/filing'), status=500)
 
     with pytest.raises(DownloadError):
-        get_filings(FORM_TYPE)
+        get_filing_ids(FORM_TYPE)
 
 
 @responses.activate
 def test_download_filing():
     filing_id = '1234'
-    file_path = os.path.join(os.path.dirname(__file__), 'fixtures/dummy_filing.zip')
+    file_path = os.path.join(os.path.dirname(__file__), 'fixtures', 'dummy_filing.zip')
     with open(file_path, 'rb') as test_file:
         responses.add(responses.GET, build_url(f'public/efile/{filing_id}'), body=test_file.read(), stream=True)
     assert download_filing(filing_id) == 'This is a test file!'

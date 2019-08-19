@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 google-cloud-bigquery = "~=1.14"
+google-cloud-pubsub = "~=0.45"
 google-cloud-storage = "~=1.16"
 peewee = "~=3.9"
 python-dateutil = "~=2.8"
