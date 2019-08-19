@@ -132,3 +132,5 @@ requirements.txt
 
 node_modules/
 .npm
+
+scripts/filings/

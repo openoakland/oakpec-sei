@@ -3,23 +3,38 @@
 This repository contains scripts used to download ethics data for the [City of Oakland](https://www.oaklandca.gov/boards-commissions/public-ethics-commission).
 
 We currently support retrieving the 2018-2019 [FPPC Form 700 Statement of Economic Interests](http://www2.oaklandnet.com/government/o/CityAdministration/d/PublicEthics/s/government-ethics/form-700/index.htm).
-The data is downloaded from [Netfile](https://netfile.com/Connect2/api/swagger-ui/#!/public/) and uploaded to a data 
+The data is downloaded from [Netfile](https://netfile.com/Connect2/api/swagger-ui/#!/public/) and uploaded to a data
 warehouse.
+
+## Usage
+The scripts are normally deployed to Google Cloud as cl
+
+The script to download all filings, parse them, and store the results resides in `scripts/refresh_form_700_data.py`.
+It can be run with the command below:
+
+    python -m scripts.refresh_form_700_data
 
 ## Development
 We use [`pipenv`](https://docs.pipenv.org/en/latest/) to manage environments and requirements, so install that first.
 
 1. Install the requirements for this project:
-    ```bash
+
+    ```
     make requirements
     ```
 
 2. Run code quality inspection:
-    ```bash
+
+    ```
     make quality
     ```
 
 3. Run tests:
-    ```bash
+
+    ```
     make test
     ```
+
+## Deployment
+This code is deployed to Google Cloud as functions responsible for (a) downloading filings and (b) performing ETL.
+The functions can all be deployed by running `./deploy.sh`.

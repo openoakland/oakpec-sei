@@ -11,10 +11,7 @@ from ..parsers import parse_filing
 @pytest.mark.usefixtures("reset_database")
 def test_parse_filing():
     filing_id = '182305528'
-    file_path = os.path.join(os.path.dirname(__file__), f'fixtures/{filing_id}.xml')
-    with open(file_path, 'r') as test_file:
-        raw_xml = test_file.read()
-
+    raw_xml = read_filing(filing_id)
     parse_filing(filing_id, raw_xml)
 
     filings = Form700Filing.select()
@@ -42,7 +39,7 @@ def test_parse_filing():
     )
 
     schedule_a1_attachments = ScheduleA1.select()
-    assert(len(schedule_a1_attachments)) == 6
+    assert len(schedule_a1_attachments) == 6
 
     assert schedule_a1_attachments[0] == ScheduleA1(
         id=UUID('2fcdab47-276c-477a-82cc-5dcbeb1e8bf8'),
@@ -68,3 +65,17 @@ def test_parse_filing():
         nature_of_investment_other_description=None,
         partnership_amount=None
     )
+
+
+def read_filing(filing_id):
+    file_path = os.path.join(os.path.dirname(__file__), 'fixtures', f'{filing_id}.xml')
+    with open(file_path, 'r') as test_file:
+        raw_xml = test_file.read()
+    return raw_xml
+
+
+@pytest.mark.usefixtures("reset_database")
+def test_parse_filing_duplicates():
+    for filing_id in ('177199734', '177199959',):
+        raw_xml = read_filing(filing_id)
+        parse_filing(filing_id, raw_xml)

@@ -2,23 +2,33 @@
 This file contains database model definitions. We use these models
 to aid in working with a temporary database for data cleansing.
 """
+import csv
+import io
 import logging
 import os
-from typing import Any
+from typing import Any, List, Tuple
 
 from peewee import BooleanField, CharField, ForeignKeyField, IntegerField, Model, UUIDField
+from playhouse.dataset import DataSet
 from playhouse.sqlite_ext import SqliteExtDatabase, TimestampField
 
 DATABASE: str = '/tmp/reporting.db'
 
 db = SqliteExtDatabase(DATABASE, pragmas=(
-    ('cache_size', -1024 * 64),  # 64MB page-cache.
-    ('journal_mode', 'wal'),  # Use WAL-mode (you should always use this!).
-    ('foreign_keys', 1)))  # Enforce foreign-key constraints.
+    # ('cache_size', -1024 * 64),  # 64MB page-cache.
+    # ('journal_mode', 'wal'),  # Use WAL-mode (you should always use this!).
+    ('foreign_keys', 1),))  # Enforce foreign-key constraints.
 logger = logging.getLogger(__name__)
 
 
+def close_connection():
+    if not db.is_closed():
+        db.close()
+
+
 def destroy_database():
+    close_connection()
+
     if os.path.exists(DATABASE):
         os.remove(DATABASE)
         logger.info(f'Deleted database: {DATABASE}')
@@ -56,7 +66,7 @@ class Office(BaseModel):
     id = UUIDField(primary_key=True)
     filing = ForeignKeyField(Form700Filing, backref='offices')
     agency = CharField()
-    division_board_district = CharField()
+    division_board_district = CharField(null=True)
     position = CharField()
     is_primary = BooleanField()
     election_date = TimestampField(null=True, utc=True, default=None)
@@ -96,5 +106,22 @@ class ScheduleA1(BaseModel):
 
 
 def build_tables():
-    db.connect()
+    close_connection()
+    db.connect(reuse_if_open=True)
     db.create_tables([cls for cls in BaseModel.__subclasses__()])
+
+
+def _table_to_csv(dataset: DataSet, table_name: str) -> io.StringIO:
+    buffer = io.StringIO()
+    table = dataset[table_name]
+    dataset.freeze(table.all(), format='csv', file_obj=buffer, quoting=csv.QUOTE_ALL)
+    buffer.seek(0)
+    return buffer
+
+
+def export_data_to_csv() -> List[Tuple[Model, io.StringIO]]:
+    db.close()
+    dataset = DataSet(f'sqlite:///{DATABASE}')
+    models: List[Model] = [cls for cls in BaseModel.__subclasses__()]
+    # pylint: disable=protected-access
+    return [(model, _table_to_csv(dataset, model._meta.table_name)) for model in models]

@@ -12,7 +12,6 @@ from .errors import DownloadError
 
 AID = 'coak'
 API_ROOT = 'https://netfile.com/Connect2/api'
-FORM_TYPE = 254  # FPPC Form 700 Statement of Economic Interests (2018-2019)
 DEFAULT_HEADERS = {
     'Accept': 'application/json',
 }
@@ -24,9 +23,9 @@ def build_url(path: str) -> str:
     return f'{API_ROOT}/{path}'
 
 
-def get_filings(form_type: int) -> Set[str]:
+def get_filing_ids(form_type: int) -> Set[str]:
     """
-    Returns a list of filings corresponding to the given form type.
+    Returns a list of filing IDs corresponding to the given form type.
     """
     url = build_url('public/list/filing')
     page = 0
