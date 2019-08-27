@@ -3,14 +3,14 @@ import xml.etree.ElementTree as ET
 from typing import List, Optional
 from uuid import UUID
 
-from .models import BaseModel, Form700Filing, Office, ScheduleA1, db
-from .utils import clean_boolean, clean_choice, clean_datetime
+from .models import BaseModel, Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, db
+from .utils import clean_boolean, clean_choice, clean_datetime, clean_string
 
 logger = logging.getLogger(__name__)
 
 
-def _get_node_value(root: ET.Element, path: str) -> Optional[str]:
-    return root.findtext(path)
+def find_and_clean_text(element: ET.Element, path: str) -> Optional[str]:
+    return clean_string(element.findtext(path))
 
 
 def _parse_cover(filing: Form700Filing, xml_tree: ET.Element) -> Form700Filing:
@@ -32,19 +32,19 @@ def _parse_offices(filing: Form700Filing, xml_tree: ET.Element) -> List[Office]:
     office_elements = xml_tree.findall('cover/offices/office')
     offices = []
     for element in office_elements:
-        office_id = UUID(element.findtext('id'))
+        office_id = UUID(find_and_clean_text(element, 'id'))
         office = Office.get_or_none(Office.id == office_id)
         if not office:
             office = Office(
                 id=office_id,
                 filing=filing,
-                agency=element.findtext('agency'),
-                division_board_district=element.findtext('division_board_district'),
-                position=element.findtext('position'),
-                is_primary=clean_boolean(element.findtext('is_primary')),
-                election_date=clean_datetime(element.findtext('election_date')),
-                assuming_date=clean_datetime(element.findtext('assuming_date')),
-                leaving_date=clean_datetime(element.findtext('leaving_date')),
+                agency=find_and_clean_text(element, 'agency'),
+                division_board_district=find_and_clean_text(element, 'division_board_district'),
+                position=find_and_clean_text(element, 'position'),
+                is_primary=clean_boolean(find_and_clean_text(element, 'is_primary')),
+                election_date=clean_datetime(find_and_clean_text(element, 'election_date')),
+                assuming_date=clean_datetime(find_and_clean_text(element, 'assuming_date')),
+                leaving_date=clean_datetime(find_and_clean_text(element, 'leaving_date')),
             )
             offices.append(office)
     return offices
@@ -56,25 +56,90 @@ def _parse_schedule_a1_attachments(filing: Form700Filing, xml_tree: ET.Element) 
     elements = xml_tree.findall('schedule_a_1s/schedule_a_1')
     for element in elements:
         attachment = ScheduleA1(
-            id=UUID(element.findtext('id')),
+            id=UUID(find_and_clean_text(element, 'id')),
             filing=filing,
-            date_acquired=clean_datetime(element.findtext('date_acquired')),
-            date_disposed=clean_datetime(element.findtext('date_disposed')),
-            description=element.findtext('description'),
-            name_of_business_entity=element.findtext('name_of_business_entity'),
+            date_acquired=clean_datetime(find_and_clean_text(element, 'date_acquired')),
+            date_disposed=clean_datetime(find_and_clean_text(element, 'date_disposed')),
+            description=find_and_clean_text(element, 'description'),
+            name_of_business_entity=find_and_clean_text(element, 'name_of_business_entity'),
             fair_market_value=clean_choice(
-                element.findtext('fair_market_value'),
+                find_and_clean_text(element, 'fair_market_value'),
                 ScheduleA1.fair_market_value_choices
             ),
             nature_of_investment=clean_choice(
-                element.findtext('nature_of_investment'),
+                find_and_clean_text(element, 'nature_of_investment'),
                 ScheduleA1.nature_of_investment_choices
             ),
-            nature_of_investment_other_description=element.findtext('nature_of_investment_other_description'),
+            nature_of_investment_other_description=find_and_clean_text(element,
+                                                                       'nature_of_investment_other_description'),
             partnership_amount=clean_choice(
-                element.findtext('partnership_amount'),
+                find_and_clean_text(element, 'partnership_amount'),
                 ScheduleA1.partnership_amount_choices
             ),
+        )
+        attachments.append(attachment)
+
+    return attachments
+
+
+def _parse_schedule_a2_attachments(filing: Form700Filing, xml_tree: ET.Element) -> List[ScheduleA2]:
+    attachments = []
+    elements = xml_tree.findall('schedule_a_2s/schedule_a_2')
+    for element in elements:
+        attachment = ScheduleA2(
+            id=UUID(find_and_clean_text(element, 'id')),
+            filing=filing,
+            address_city=find_and_clean_text(element, 'address/city'),
+            address_state=find_and_clean_text(element, 'address/state'),
+            address_zip=find_and_clean_text(element, 'address/zip'),
+            business_position=find_and_clean_text(element, 'business_position'),
+            date_acquired=clean_datetime(find_and_clean_text(element, 'date_acquired')),
+            date_disposed=clean_datetime(find_and_clean_text(element, 'date_disposed')),
+            description=find_and_clean_text(element, 'description'),
+            entity_name=find_and_clean_text(element, 'entity_name'),
+            fair_market_value=clean_choice(
+                find_and_clean_text(element, 'fair_market_value_schedule_a_2'),
+                ScheduleA2.fair_market_value_choices
+            ),
+            gross_income_received=clean_choice(
+                find_and_clean_text(element, 'gross_income_received'),
+                ScheduleA2.gross_income_received_choices
+            ),
+            nature_of_investment=clean_choice(
+                find_and_clean_text(element, 'nature_of_investment'),
+                ScheduleA2.nature_of_investment_choices
+            ),
+            nature_of_investment_other_description=find_and_clean_text(element,
+                                                                       'nature_of_investment_other_description'),
+        )
+        attachments.append(attachment)
+
+    return attachments
+
+
+def _parse_schedule_b_attachments(filing: Form700Filing, xml_tree: ET.Element) -> List[ScheduleB]:
+    attachments = []
+    elements = xml_tree.findall('schedule_bs/schedule_b')
+    for element in elements:
+        attachment = ScheduleB(
+            id=UUID(find_and_clean_text(element, 'id')),
+            filing=filing,
+            city=find_and_clean_text(element, 'city'),
+            date_acquired=clean_datetime(find_and_clean_text(element, 'date_acquired')),
+            date_disposed=clean_datetime(find_and_clean_text(element, 'date_disposed')),
+            fair_market_value=clean_choice(
+                find_and_clean_text(element, 'fair_market_value'),
+                ScheduleB.fair_market_value_choices
+            ),
+            gross_income_received=clean_choice(
+                find_and_clean_text(element, 'gross_income_received'),
+                ScheduleB.gross_income_received_choices
+            ),
+            nature_of_interest=clean_choice(
+                find_and_clean_text(element, 'nature_of_interest'),
+                ScheduleB.nature_of_interest_choices
+            ),
+            parcel_or_address=find_and_clean_text(element, 'parcel_or_address'),
         )
         attachments.append(attachment)
 
@@ -96,8 +161,8 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             filing = _parse_cover(filing, xml_tree)
             offices = _parse_offices(filing, xml_tree)
             schedule_a1_attachments = _parse_schedule_a1_attachments(filing, xml_tree)
-            # filing = _parse_schedule_a2_attachments(filing, xml_tree)
-            # filing = _parse_schedule_b_attachments(filing, xml_tree)
+            schedule_a2_attachments = _parse_schedule_a2_attachments(filing, xml_tree)
+            schedule_b_attachments = _parse_schedule_b_attachments(filing, xml_tree)
             # filing = _parse_schedule_c1_attachments(filing, xml_tree)
             # filing = _parse_schedule_c2_attachments(filing, xml_tree)
             # filing = _parse_schedule_d_attachments(filing, xml_tree)
@@ -105,6 +170,8 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             _save_models([filing])
             _save_models(offices)
             _save_models(schedule_a1_attachments)
+            _save_models(schedule_a2_attachments)
+            _save_models(schedule_b_attachments)
         except Exception:  # pylint: disable=broad-except
             transaction.rollback()
             logger.exception(f'Failed to parse filing {filing_id}!')

@@ -1,0 +1,317 @@
+<disclosure agency="NetFile" type="netfile.render.fppc._2019.RenderableFppc700" version="1.0">
+  <current_page>0</current_page>
+  <hide_signature_names>false</hide_signature_names>
+  <show_blank_pages>false</show_blank_pages>
+  <show_draft>false</show_draft>
+  <show_redacted>true</show_redacted>
+  <report_year>2018</report_year>
+  <total_pages>6</total_pages>
+  <x_position />
+  <y_position />
+  <cover>
+    <first_name>Joseph</first_name>
+    <jurisdiction>
+      <description_city>Oakland </description_city>
+      <description_county>alameda </description_county>
+      <is_city>true</is_city>
+      <is_county>true</is_county>
+      <is_judge_or_court>false</is_judge_or_court>
+      <is_multi_county>false</is_multi_county>
+      <is_other>false</is_other>
+      <is_state>false</is_state>
+      <id>b62f2807-f31a-46a1-bafe-1fd245843567</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </jurisdiction>
+    <last_name>Tanios</last_name>
+    <middle_name>E. </middle_name>
+    <offices count="1">
+      <office>
+        <agency>City of Oakland</agency>
+        <assuming_date />
+        <division_board_district>30232 - Construction Management and Material Testing</division_board_district>
+        <election_date />
+        <is_primary>true</is_primary>
+        <leaving_date />
+        <lowest_similarity>100</lowest_similarity>
+        <position>Construction Inspector Supervisor II (Field)</position>
+        <source>1</source>
+        <id>fb1a0fac-73b4-4870-8194-fa8fe5ed6e7c</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </office>
+    </offices>
+    <statement_type>
+      <annual_start_date />
+      <date_assumed />
+      <is_annual>true</is_annual>
+      <is_assuming>false</is_assuming>
+      <is_candidate>false</is_candidate>
+      <is_leaving>false</is_leaving>
+      <leaving_left_office />
+      <leaving_start_date />
+      <candidate_election_date />
+      <id>c7d16bb6-881d-47ab-88d4-36dbae3eb892</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </statement_type>
+    <verification>
+      <date_signed>03/31/2019 01:40:22</date_signed>
+      <mailing_address>
+        <city>Oakland</city>
+        <state>CA</state>
+        <zip>94612 </zip>
+      </mailing_address>
+      <phone />
+      <signature>Joseph E.  Tanios</signature>
+      <id>b93c29b2-27cb-453c-961f-72a68b50edb7</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </verification>
+    <id>295609f3-9357-4608-b1d8-18622981218a</id>
+    <version_for_add>0</version_for_add>
+    <version_for_delete>0</version_for_delete>
+    <version_for_edit>0</version_for_edit>
+  </cover>
+  <form_tool_hash>1251649</form_tool_hash>
+  <has_loaded_offices_from_admin>true</has_loaded_offices_from_admin>
+  <schedule_a_1s count="0" />
+  <schedule_a_2s count="1">
+    <schedule_a_2>
+      <address>
+        <city>Oakland </city>
+        <state>CA</state>
+        <zip>94619</zip>
+      </address>
+      <business_position>owner </business_position>
+      <business_type>2</business_type>
+      <date_acquired />
+      <date_disposed />
+      <description>real Estate investment </description>
+      <entity_name>JOseph &amp; Mary Tanios
+</entity_name>
+      <fair_market_value_schedule_a_2>4</fair_market_value_schedule_a_2>
+      <gross_income_received>4</gross_income_received>
+      <income_sources count="0" />
+      <nature_of_investment>1</nature_of_investment>
+      <real_properties count="0" />
+      <id>831903c6-3d3a-48bf-b22f-8b5c907c60cf</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_2>
+  </schedule_a_2s>
+  <schedule_bs count="2">
+    <schedule_b>
+      <city>Oakland , Ca  94608</city>
+      <date_acquired />
+      <date_disposed />
+      <fair_market_value>3</fair_market_value>
+      <gross_income_received>4</gross_income_received>
+      <income_sources count="4">
+        <source>
+          <name>Name(s) redacted</name>
+          <id>d0272149-34f3-46fe-9ccd-602e6baeddb3</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </source>
+        <source>
+          <name> </name>
+          <id>88456ffb-b3ac-42e8-b59e-688c0e057cae</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </source>
+        <source>
+          <name> </name>
+          <id>c02641ec-9e7d-4045-9fbf-c63db413e819</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </source>
+        <source>
+          <name>Name(s) redacted</name>
+          <id>078f2a12-14f0-455c-a66f-a9081ce338a9</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </source>
+      </income_sources>
+      <loan>
+        <address>
+          <city>Sioux Falls </city>
+          <state>SD</state>
+          <zip>57117-6243</zip>
+        </address>
+        <business_activity>Sious Falls, SD </business_activity>
+        <has_no_interest_rate>false</has_no_interest_rate>
+        <highest_balance>3</highest_balance>
+        <interest_rate>4.88</interest_rate>
+        <name_of_lender>City mortgage </name_of_lender>
+        <term>360</term>
+        <term_type>Year</term_type>
+        <id>8cb7ecd9-6be5-4ffe-9d47-68e3be1938dc</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </loan>
+      <nature_of_interest>1</nature_of_interest>
+      <parcel_or_address>865 29th street </parcel_or_address>
+      <id>befc368a-2c3c-43da-a2a8-50e940ab78c4</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_b>
+    <schedule_b>
+      <city>Oakland, CA 94605</city>
+      <date_acquired />
+      <date_disposed />
+      <fair_market_value>3</fair_market_value>
+      <gross_income_received>3</gross_income_received>
+      <income_sources count="4">
+        <source>
+          <name>Name(s) redacted</name>
+          <id>823e259e-ab02-40de-a31d-1a5f3d3a7c3c</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </source>
+        <source>
+          <name> </name>
+          <id>78aa617f-aed9-4fc9-8ca8-6e7c151e52d2</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </source>
+        <source>
+          <name> </name>
+          <id>d43fb792-9a11-433b-96b9-67c5aab5731c</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </source>
+        <source>
+          <name>Name(s) redacted</name>
+          <id>4a00b4ec-0d0d-48d0-9460-b538122c9b86</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </source>
+      </income_sources>
+      <loan>
+        <address>
+          <city>Irving</city>
+          <state>TX</state>
+          <zip>75063</zip>
+        </address>
+        <has_no_interest_rate>false</has_no_interest_rate>
+        <highest_balance>4</highest_balance>
+        <interest_rate>4.8</interest_rate>
+        <name_of_lender>Mr. Cooper 
+
+
+ 
+</name_of_lender>
+        <term>360</term>
+        <term_type>Year</term_type>
+        <id>c6111c59-cad1-4c75-bd31-65a951e1f105</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </loan>
+      <nature_of_interest>1</nature_of_interest>
+      <parcel_or_address>865 29th Street </parcel_or_address>
+      <id>b069b6b3-3fde-4e66-95b9-a3eef4615111</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_b>
+  </schedule_bs>
+  <schedule_c_1s count="2">
+    <schedule_c_1>
+      <address>
+        <city>Oakland </city>
+        <state>Ca</state>
+        <zip>94612</zip>
+      </address>
+      <business_activity>Real property </business_activity>
+      <business_position>Owner </business_position>
+      <gross_income_received_schedule_c_1>4</gross_income_received_schedule_c_1>
+      <income_sources count="0" />
+      <name_of_income_source>Rental property </name_of_income_source>
+      <reason_for_income>8</reason_for_income>
+      <id>dea22ddc-4d42-4863-ac0b-681470f5219c</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_c_1>
+    <schedule_c_1>
+      <address>
+        <city>Oakland </city>
+        <state>CA</state>
+        <zip>94612</zip>
+      </address>
+      <business_activity>865, 29th Street</business_activity>
+      <business_position>Real Property</business_position>
+      <gross_income_received_schedule_c_1>4</gross_income_received_schedule_c_1>
+      <income_sources count="0" />
+      <name_of_income_source>Rental Property </name_of_income_source>
+      <reason_for_income>8</reason_for_income>
+      <id>c7a60ac2-4f93-4d07-b409-61c5b23faabc</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_c_1>
+  </schedule_c_1s>
+  <schedule_c_2s count="1">
+    <schedule_c_2>
+      <loan>
+        <address>
+          <city>Irving </city>
+          <state>TX</state>
+          <zip>75063</zip>
+        </address>
+        <business_activity>Mr. Cooper 
+4000 Horison Way 
+Irving,  Texas 75063</business_activity>
+        <has_no_interest_rate>false</has_no_interest_rate>
+        <highest_balance>4</highest_balance>
+        <interest_rate>4.8 %</interest_rate>
+        <name_of_lender>Mr. Cooper 
+4000 Horison Way 
+Irving,  Texas 75063</name_of_lender>
+        <term>360</term>
+        <term_type>Month</term_type>
+        <id>44752512-3c4d-47b1-8d5b-1549d78aaa23</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </loan>
+      <loan_security>1</loan_security>
+      <loan_security_real_property_address />
+      <id>0edb096b-b390-4629-9afe-2393ac5fc1f0</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_c_2>
+  </schedule_c_2s>
+  <schedule_ds count="0" />
+  <schedule_es count="0" />
+  <e_filing_as_filing_of_record_allowed>true</e_filing_as_filing_of_record_allowed>
+  <filing_information>
+    <amendment_sequence_number>0</amendment_sequence_number>
+    <amendment_superceded_filing_date>01/01/0001</amendment_superceded_filing_date>
+    <creation_date>01/01/0001 00:00:00</creation_date>
+    <filer_id>COAK-152406</filer_id>
+    <filing_date>01/01/0001</filing_date>
+    <form_tool_hash>1251649</form_tool_hash>
+    <s_a_n>021300008-NFH-0008</s_a_n>
+    <software_name>NetFile Web SEI</software_name>
+    <software_version>2.0</software_version>
+  </filing_information>
+</disclosure>
