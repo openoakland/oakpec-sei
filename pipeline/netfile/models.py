@@ -14,10 +14,12 @@ from playhouse.sqlite_ext import SqliteExtDatabase, TimestampField
 
 DATABASE: str = '/tmp/reporting.db'
 
-db = SqliteExtDatabase(DATABASE, pragmas=(
-    # ('cache_size', -1024 * 64),  # 64MB page-cache.
-    # ('journal_mode', 'wal'),  # Use WAL-mode (you should always use this!).
-    ('foreign_keys', 1),))  # Enforce foreign-key constraints.
+db = SqliteExtDatabase(
+    DATABASE,
+    pragmas=(
+        ('foreign_keys', 1),  # Enforce foreign-key constraints
+    )
+)
 logger = logging.getLogger(__name__)
 
 
@@ -40,13 +42,15 @@ class BaseModel(Model):
     class Meta:
         database = db
 
-    # TODO Remove once https://github.com/coleifer/peewee/issues/1993 is resolved
     def __eq__(self, other: Any) -> bool:
         if not super().__eq__(other):
             return False
 
         for field in self._meta.sorted_fields:
-            if getattr(self, field.name) != getattr(other, field.name):
+            self_value = getattr(self, field.name)
+            other_value = getattr(other, field.name)
+            if self_value != other_value:
+                logger.debug(f'Field #{field.name} value of #{self_value} is unequal to #{other_value}')
                 return False
 
         return True
@@ -75,6 +79,7 @@ class Office(BaseModel):
 
 
 class ScheduleA1(BaseModel):
+    """ Investments (stocks, bonds, and other interests). Ownership less than 10%. """
     fair_market_value_choices = ('2000-10000', '10001-100000', '100001-1000000', '1000000+')
     nature_of_investment_choices = ('stock', 'partnership', 'other',)
     partnership_amount_choices = ('0-499', '500+')
@@ -90,19 +95,46 @@ class ScheduleA1(BaseModel):
     nature_of_investment_other_description = CharField(null=True)
     partnership_amount = CharField(choices=partnership_amount_choices, null=True)
 
-    """
-    <date_acquired />
-      <date_disposed />
-      <description>Equipment and Technologies</description>
-      <fair_market_value>1</fair_market_value>
-      <name_of_business_entity>Applied Materials</name_of_business_entity>
-      <nature_of_investment>1</nature_of_investment>
-      <partnership_amount>0</partnership_amount>
-      <id>2fcdab47-276c-477a-82cc-5dcbeb1e8bf8</id>
-      <version_for_add>0</version_for_add>
-      <version_for_delete>0</version_for_delete>
-      <version_for_edit>0</version_for_edit>
-      """
+
+class ScheduleA2(BaseModel):
+    """ Investments, income, and assets of business entities/trusts. Ownership 10% or greater. """
+    fair_market_value_choices = ('0-1999', '2000-10000', '10001-100000', '100001-1000000', '1000000+')
+    gross_income_received_choices = ('0-499', '500-1000', '1001-10000', '10001-100000', '100000+')
+    nature_of_investment_choices = ('sole_proprietorship', 'partnership', 'other',)
+
+    id = UUIDField(primary_key=True)
+    filing = ForeignKeyField(Form700Filing, backref='schedule_a2_attachments')
+    address_city = CharField()
+    address_state = CharField()
+    address_zip = CharField()
+    business_position = CharField()
+    date_acquired = TimestampField(null=True, utc=True, default=None)
+    date_disposed = TimestampField(null=True, utc=True, default=None)
+    description = CharField()
+    entity_name = CharField()
+    fair_market_value = CharField(choices=fair_market_value_choices)
+    gross_income_received = CharField(choices=gross_income_received_choices)
+    nature_of_investment = CharField(choices=nature_of_investment_choices)
+    nature_of_investment_other_description = CharField(null=True)
+
+
+# TODO Parse income sources
+# TODO Parse loan data
+class ScheduleB(BaseModel):
+    """ Interests in real property, including rental income. """
+    fair_market_value_choices = ('2000-10000', '10001-100000', '100001-1000000', '1000000+')
+    gross_income_received_choices = ('0-499', '500-1000', '1001-10000', '10001-100000', '100000+')
+    nature_of_interest_choices = ('ownership', 'easement', 'leasehold', 'other')
+
+    id = UUIDField(primary_key=True)
+    filing = ForeignKeyField(Form700Filing, backref='schedule_b_attachments')
+    city = CharField()
+    date_acquired = TimestampField(null=True, utc=True, default=None)
+    date_disposed = TimestampField(null=True, utc=True, default=None)
+    fair_market_value = CharField(choices=fair_market_value_choices)
+    gross_income_received = CharField(choices=gross_income_received_choices)
+    nature_of_interest = CharField(choices=nature_of_interest_choices)
+    parcel_or_address = CharField()
 
 
 def build_tables():
