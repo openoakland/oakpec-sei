@@ -1,3 +1,4 @@
+import re
 from typing import Optional, Sequence
 
 import pytz
@@ -40,4 +41,7 @@ def clean_choice(s: Optional[str], choices: Sequence[str]) -> Optional[str]:
 
 
 def clean_string(s: Optional[str]) -> Optional[str]:
-    return s.strip() if s else None
+    if s is None:
+        return None
+
+    return re.sub(r'\s+', ' ', s).strip()

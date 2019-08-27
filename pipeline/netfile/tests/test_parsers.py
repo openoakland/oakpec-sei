@@ -43,7 +43,7 @@ def test_parse_filing():
         id=UUID('97574a2f-3303-4680-b96b-6266c7d88804'),
         filing=filing,
         agency='City of Oakland',
-        division_board_district='00611  - District Six Unit',
+        division_board_district='00611 - District Six Unit',
         is_primary=True,
         position='Council Member',
         election_date=None,
@@ -122,7 +122,7 @@ def test_parse_schedule_b():
     assert schedule_b_attachments[0] == ScheduleB(
         id=UUID('befc368a-2c3c-43da-a2a8-50e940ab78c4'),
         filing=filing,
-        city='Oakland , Ca  94608',
+        city='Oakland , Ca 94608',
         date_acquired=None,
         date_disposed=None,
         fair_market_value='100001-1000000',
