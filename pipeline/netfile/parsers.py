@@ -175,7 +175,6 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
         except Exception:  # pylint: disable=broad-except
             transaction.rollback()
             logger.exception(f'Failed to parse filing {filing_id}!')
-            raise
 
     logger.info(f'Successfully parsed Form 700 filing {filing_id}')
     return filing

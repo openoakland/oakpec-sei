@@ -73,4 +73,10 @@ def process_netfile_filings(data: dict, context) -> None:
 
     # Export the data to the data warehouse
     for model, export in export_data_to_csv():
-        refresh_model_data(model, export)
+        try:
+            bucket = storage_client.get_bucket(BUCKET_NAME)
+            blob = bucket.blob(f'{directory}/{model.__name__}.csv')
+            blob.upload_from_file(export, rewind=True, content_type='text/csv')
+            refresh_model_data(model, export)
+        except Exception:
+            logger.exception(f'Failed to upload data for #{model} to BigQuery')

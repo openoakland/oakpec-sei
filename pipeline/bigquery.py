@@ -1,10 +1,14 @@
 import io
+import logging
 from typing import List, Union
 
 from google.cloud import bigquery
+from google.cloud.exceptions import GoogleCloudError
 from peewee import Field, Model
 
-from .netfile.models import Form700Filing, Office, ScheduleA1
+from .netfile.models import Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB
+
+logger = logging.getLogger(__name__)
 
 PROJECT_ID: str = 'openoakland'
 DATASET_ID: str = 'ethics'
@@ -26,7 +30,7 @@ def _stringio2bytesio(data: io.StringIO) -> io.BytesIO:
 
 
 def _recreate_table(client: bigquery.Client, table_id: str, schema: list) -> None:
-    print(f'Recreating {table_id} table...')
+    logger.info(f'Recreating {table_id} table...')
     dataset_ref = client.dataset(DATASET_ID)
     table_ref = dataset_ref.table(table_id)
     table = bigquery.Table(table_ref, schema=schema)
@@ -38,7 +42,7 @@ def _refresh_table_data(table_id: str, schema: List[bigquery.SchemaField], sourc
     client = bigquery.Client()
     _recreate_table(client, table_id, schema)
 
-    print(f'Loading {table_id} data into BigQuery...')
+    logger.info(f'Loading {table_id} data into BigQuery...')
     dataset_ref = client.dataset(DATASET_ID)
     table_ref = dataset_ref.table(table_id)
 
@@ -54,10 +58,12 @@ def _refresh_table_data(table_id: str, schema: List[bigquery.SchemaField], sourc
         job_config=job_config
     )
 
-    # Wait for the loading to complete
-    job.result()
-
-    print(f'Loaded {job.output_rows} rows into {DATASET_ID}:{table_id}.')
+    try:
+        # Wait for the loading to complete
+        job.result()
+        logger.info(f'Loaded {job.output_rows} rows into {DATASET_ID}:{table_id}.')
+    except GoogleCloudError as e:
+        logger.exception(f'Failed to push data to {DATASET_ID}:{table_id}: {e.errors}')
 
 
 def _get_type_for_field(field: Field) -> str:
@@ -86,10 +92,13 @@ def _get_table_id_for_model(model: Model) -> str:
         Form700Filing: 'filings',
         Office: 'offices',
         ScheduleA1: 'schedule_a1_attachments',
+        ScheduleA2: 'schedule_a2_attachments',
+        ScheduleB: 'schedule_b_attachments',
     }[model]
 
 
 def refresh_model_data(model: Model, data: io.StringIO) -> None:
+    data.seek(0)
     source_file = _stringio2bytesio(data)
     schema = _get_schema_for_model(model)
     table_id = _get_table_id_for_model(model)
