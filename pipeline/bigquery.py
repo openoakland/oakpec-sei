@@ -6,7 +6,7 @@ from google.cloud import bigquery
 from google.cloud.exceptions import GoogleCloudError
 from peewee import Field, Model
 
-from .netfile.models import Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1
+from .netfile.models import Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2
 
 logger = logging.getLogger(__name__)
 
@@ -71,6 +71,7 @@ def _get_type_for_field(field: Field) -> str:
     return {
         'bigint': 'INT64',
         'bool': 'BOOL',
+        'float': 'FLOAT64',
         'int': 'INT64',
         'uuid': 'STRING',
         'varchar': 'STRING',
@@ -95,6 +96,7 @@ def _get_table_id_for_model(model: Model) -> str:
         ScheduleA2: 'schedule_a2_attachments',
         ScheduleB: 'schedule_b_attachments',
         ScheduleC1: 'schedule_c1_attachments',
+        ScheduleC2: 'schedule_c2_attachments',
     }[model]
 
 
