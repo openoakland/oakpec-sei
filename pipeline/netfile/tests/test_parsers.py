@@ -4,7 +4,7 @@ from uuid import UUID
 
 import pytest
 
-from ..models import Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB
+from ..models import Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1
 from ..parsers import parse_filing
 
 
@@ -140,4 +140,37 @@ def test_parse_schedule_b():
         gross_income_received='1001-10000',
         nature_of_interest='ownership',
         parcel_or_address='865 29th Street',
+    )
+
+
+@pytest.mark.usefixtures("reset_database")
+def test_parse_schedule_c1():
+    filing = _parse_filing('178665313')
+
+    schedule_c1_attachments = ScheduleC1.select()
+    assert len(schedule_c1_attachments) == 2
+
+    assert schedule_c1_attachments[0] == ScheduleC1(
+        id=UUID('dea22ddc-4d42-4863-ac0b-681470f5219c'),
+        filing=filing,
+        address_city='Oakland',
+        address_state='Ca',
+        address_zip='94612',
+        business_activity='Real property',
+        business_position='Owner',
+        gross_income_received='10001-100000',
+        name_of_income_source='Rental property',
+        reason_for_income='rental_income',
+    )
+    assert schedule_c1_attachments[1] == ScheduleC1(
+        id=UUID('c7a60ac2-4f93-4d07-b409-61c5b23faabc'),
+        filing=filing,
+        address_city='Oakland',
+        address_state='CA',
+        address_zip='94612',
+        business_activity='865, 29th Street',
+        business_position='Real Property',
+        gross_income_received='10001-100000',
+        name_of_income_source='Rental Property',
+        reason_for_income='rental_income',
     )
