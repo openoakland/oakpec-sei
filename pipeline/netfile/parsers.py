@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 from typing import List, Optional
 from uuid import UUID
 
-from .models import BaseModel, Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, db
+from .models import BaseModel, Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, db
 from .utils import clean_boolean, clean_choice, clean_datetime, clean_string
 
 logger = logging.getLogger(__name__)
@@ -50,7 +50,6 @@ def _parse_offices(filing: Form700Filing, xml_tree: ET.Element) -> List[Office]:
     return offices
 
 
-# TODO Handle amendments
 def _parse_schedule_a1_attachments(filing: Form700Filing, xml_tree: ET.Element) -> List[ScheduleA1]:
     attachments = []
     elements = xml_tree.findall('schedule_a_1s/schedule_a_1')
@@ -146,6 +145,34 @@ def _parse_schedule_b_attachments(filing: Form700Filing, xml_tree: ET.Element) -
     return attachments
 
 
+def _parse_schedule_c1_attachments(filing: Form700Filing, xml_tree: ET.Element) -> List[ScheduleA2]:
+    attachments = []
+    elements = xml_tree.findall('schedule_c_1s/schedule_c_1')
+    for element in elements:
+        attachment = ScheduleC1(
+            id=UUID(find_and_clean_text(element, 'id')),
+            filing=filing,
+            address_city=find_and_clean_text(element, 'address/city'),
+            address_state=find_and_clean_text(element, 'address/state'),
+            address_zip=find_and_clean_text(element, 'address/zip'),
+            business_activity=find_and_clean_text(element, 'business_activity'),
+            business_position=find_and_clean_text(element, 'business_position'),
+            gross_income_received=clean_choice(
+                find_and_clean_text(element, 'gross_income_received_schedule_c_1'),
+                ScheduleC1.gross_income_received_choices
+            ),
+            name_of_income_source=find_and_clean_text(element, 'name_of_income_source'),
+            reason_for_income=clean_choice(
+                find_and_clean_text(element, 'reason_for_income'),
+                ScheduleC1.reason_for_income_choices
+            ),
+            reason_for_income_other=find_and_clean_text(element, 'reason_for_income_other'),
+        )
+        attachments.append(attachment)
+
+    return attachments
+
+
 def _save_models(instances: List[BaseModel]) -> None:
     for instance in instances:
         instance.save(force_insert=True)
@@ -163,7 +190,7 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             schedule_a1_attachments = _parse_schedule_a1_attachments(filing, xml_tree)
             schedule_a2_attachments = _parse_schedule_a2_attachments(filing, xml_tree)
             schedule_b_attachments = _parse_schedule_b_attachments(filing, xml_tree)
-            # filing = _parse_schedule_c1_attachments(filing, xml_tree)
+            schedule_c1_attachments = _parse_schedule_c1_attachments(filing, xml_tree)
             # filing = _parse_schedule_c2_attachments(filing, xml_tree)
             # filing = _parse_schedule_d_attachments(filing, xml_tree)
             # filing = _parse_schedule_e_attachments(filing, xml_tree)
@@ -172,6 +199,7 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             _save_models(schedule_a1_attachments)
             _save_models(schedule_a2_attachments)
             _save_models(schedule_b_attachments)
+            _save_models(schedule_c1_attachments)
         except Exception:  # pylint: disable=broad-except
             transaction.rollback()
             logger.exception(f'Failed to parse filing {filing_id}!')

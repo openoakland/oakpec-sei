@@ -50,7 +50,7 @@ class BaseModel(Model):
             self_value = getattr(self, field.name)
             other_value = getattr(other, field.name)
             if self_value != other_value:
-                logger.debug(f'Field #{field.name} value of #{self_value} is unequal to #{other_value}')
+                logger.error(f'Field {field.name} value of {self_value} is unequal to {other_value}')
                 return False
 
         return True
@@ -84,7 +84,7 @@ class ScheduleA1(BaseModel):
     nature_of_investment_choices = ('stock', 'partnership', 'other',)
     partnership_amount_choices = ('0-499', '500+')
 
-    id = UUIDField(primary_key=True)
+    id = UUIDField()
     filing = ForeignKeyField(Form700Filing, backref='schedule_a1_attachments')
     date_acquired = TimestampField(null=True, utc=True, default=None)
     date_disposed = TimestampField(null=True, utc=True, default=None)
@@ -95,6 +95,11 @@ class ScheduleA1(BaseModel):
     nature_of_investment_other_description = CharField(null=True)
     partnership_amount = CharField(choices=partnership_amount_choices, null=True)
 
+    class Meta:
+        indexes = (
+            (('id', 'filing'), True),
+        )
+
 
 class ScheduleA2(BaseModel):
     """ Investments, income, and assets of business entities/trusts. Ownership 10% or greater. """
@@ -102,12 +107,12 @@ class ScheduleA2(BaseModel):
     gross_income_received_choices = ('0-499', '500-1000', '1001-10000', '10001-100000', '100000+')
     nature_of_investment_choices = ('sole_proprietorship', 'partnership', 'other',)
 
-    id = UUIDField(primary_key=True)
+    id = UUIDField()
     filing = ForeignKeyField(Form700Filing, backref='schedule_a2_attachments')
     address_city = CharField()
     address_state = CharField()
     address_zip = CharField()
-    business_position = CharField()
+    business_position = CharField(null=True, default=None)
     date_acquired = TimestampField(null=True, utc=True, default=None)
     date_disposed = TimestampField(null=True, utc=True, default=None)
     description = CharField()
@@ -116,6 +121,11 @@ class ScheduleA2(BaseModel):
     gross_income_received = CharField(choices=gross_income_received_choices)
     nature_of_investment = CharField(choices=nature_of_investment_choices)
     nature_of_investment_other_description = CharField(null=True)
+
+    class Meta:
+        indexes = (
+            (('id', 'filing'), True),
+        )
 
 
 # TODO Parse income sources
@@ -126,7 +136,7 @@ class ScheduleB(BaseModel):
     gross_income_received_choices = ('0-499', '500-1000', '1001-10000', '10001-100000', '100000+')
     nature_of_interest_choices = ('ownership', 'easement', 'leasehold', 'other')
 
-    id = UUIDField(primary_key=True)
+    id = UUIDField()
     filing = ForeignKeyField(Form700Filing, backref='schedule_b_attachments')
     city = CharField()
     date_acquired = TimestampField(null=True, utc=True, default=None)
@@ -135,6 +145,38 @@ class ScheduleB(BaseModel):
     gross_income_received = CharField(choices=gross_income_received_choices)
     nature_of_interest = CharField(choices=nature_of_interest_choices)
     parcel_or_address = CharField()
+
+    class Meta:
+        indexes = (
+            (('id', 'filing'), True),
+        )
+
+
+# TODO Process income_sources
+class ScheduleC1(BaseModel):
+    """ Income received. """
+    gross_income_received_choices = ('none', '500-1000', '1001-10000', '10001-100000', '100000+')
+    # NOTE: This order is NOT the same as that printed on the form!
+    reason_for_income_choices = (
+        'salary', 'spouse_income', 'loan_repayment', 'partnership', 'sale', 'other', 'commission', 'rental_income',
+    )
+
+    id = UUIDField()
+    filing = ForeignKeyField(Form700Filing, backref='schedule_c1_attachments')
+    address_city = CharField()
+    address_state = CharField()
+    address_zip = CharField()
+    business_activity = CharField(null=True, default=None)
+    business_position = CharField(null=True, default=None)
+    gross_income_received = CharField(choices=gross_income_received_choices)
+    name_of_income_source = CharField()
+    reason_for_income = CharField(choices=reason_for_income_choices)
+    reason_for_income_other = CharField(null=True, default=None)
+
+    class Meta:
+        indexes = (
+            (('id', 'filing'), True),
+        )
 
 
 def build_tables():
