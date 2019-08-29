@@ -8,7 +8,7 @@ import logging
 import os
 from typing import Any, List, Tuple
 
-from peewee import BooleanField, CharField, ForeignKeyField, IntegerField, Model, UUIDField
+from peewee import BooleanField, CharField, FloatField, ForeignKeyField, IntegerField, Model, UUIDField
 from playhouse.dataset import DataSet
 from playhouse.sqlite_ext import SqliteExtDatabase, TimestampField
 
@@ -172,6 +172,33 @@ class ScheduleC1(BaseModel):
     name_of_income_source = CharField()
     reason_for_income = CharField(choices=reason_for_income_choices)
     reason_for_income_other = CharField(null=True, default=None)
+
+    class Meta:
+        indexes = (
+            (('id', 'filing'), True),
+        )
+
+
+# TODO Parse loan security text fields
+# TODO Parse comments
+class ScheduleC2(BaseModel):
+    """ Loans received. """
+    highest_balance_choices = ('500-1000', '1001-10000', '10001-100000', '100000+')
+    loan_security_choices = ('none', 'personal_residence', 'real_property', 'guarantor', 'other')
+
+    id = UUIDField()
+    filing = ForeignKeyField(Form700Filing, backref='schedule_c2_attachments')
+    address_city = CharField()
+    address_state = CharField()
+    address_zip = CharField()
+    business_activity = CharField(null=True, default=None)
+    has_interest_rate = BooleanField()
+    highest_balance = CharField(choices=highest_balance_choices)
+    interest_rate = FloatField()
+    loan_security = CharField(choices=loan_security_choices)
+    name_of_lender = CharField()
+    term = IntegerField()
+    term_type = CharField()
 
     class Meta:
         indexes = (

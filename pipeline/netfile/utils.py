@@ -45,3 +45,10 @@ def clean_string(s: Optional[str]) -> Optional[str]:
         return None
 
     return re.sub(r'\s+', ' ', s).strip()
+
+
+def clean_integer(s: Optional[str]) -> Optional[int]:
+    if s is None:
+        return None
+
+    return int(s)

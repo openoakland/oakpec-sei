@@ -3,8 +3,8 @@ import xml.etree.ElementTree as ET
 from typing import List, Optional
 from uuid import UUID
 
-from .models import BaseModel, Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, db
-from .utils import clean_boolean, clean_choice, clean_datetime, clean_string
+from .models import BaseModel, Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2, db
+from .utils import clean_boolean, clean_choice, clean_datetime, clean_integer, clean_string
 
 logger = logging.getLogger(__name__)
 
@@ -173,6 +173,48 @@ def _parse_schedule_c1_attachments(filing: Form700Filing, xml_tree: ET.Element) 
     return attachments
 
 
+def _parse_schedule_c2_attachments(filing: Form700Filing, xml_tree: ET.Element) -> List[ScheduleA2]:
+    attachments = []
+    elements = xml_tree.findall('schedule_c_2s/schedule_c_2')
+    for element in elements:
+
+        term_type = find_and_clean_text(element, 'loan/term_type')
+        if term_type:
+            term_type = term_type.lower()
+
+        interest_rate = None
+        raw_interest_rate = find_and_clean_text(element, 'loan/interest_rate')
+        if raw_interest_rate:
+            raw_interest_rate = clean_string(raw_interest_rate.replace('%', ''))
+            assert raw_interest_rate
+            interest_rate = float(raw_interest_rate)
+
+        attachment = ScheduleC2(
+            id=UUID(find_and_clean_text(element, 'id')),
+            filing=filing,
+            address_city=find_and_clean_text(element, 'loan/address/city'),
+            address_state=find_and_clean_text(element, 'loan/address/state'),
+            address_zip=find_and_clean_text(element, 'loan/address/zip'),
+            business_activity=find_and_clean_text(element, 'loan/business_activity'),
+            has_interest_rate=not clean_boolean(find_and_clean_text(element, 'loan/has_no_interest_rate')),
+            highest_balance=clean_choice(
+                find_and_clean_text(element, 'loan/highest_balance'),
+                ScheduleC2.highest_balance_choices
+            ),
+            interest_rate=interest_rate,
+            loan_security=clean_choice(
+                find_and_clean_text(element, 'loan_security'),
+                ScheduleC2.loan_security_choices
+            ),
+            name_of_lender=find_and_clean_text(element, 'loan/name_of_lender'),
+            term=clean_integer(find_and_clean_text(element, 'loan/term')),
+            term_type=term_type,
+        )
+        attachments.append(attachment)
+
+    return attachments
+
+
 def _save_models(instances: List[BaseModel]) -> None:
     for instance in instances:
         instance.save(force_insert=True)
@@ -191,7 +233,7 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             schedule_a2_attachments = _parse_schedule_a2_attachments(filing, xml_tree)
             schedule_b_attachments = _parse_schedule_b_attachments(filing, xml_tree)
             schedule_c1_attachments = _parse_schedule_c1_attachments(filing, xml_tree)
-            # filing = _parse_schedule_c2_attachments(filing, xml_tree)
+            schedule_c2_attachments = _parse_schedule_c2_attachments(filing, xml_tree)
             # filing = _parse_schedule_d_attachments(filing, xml_tree)
             # filing = _parse_schedule_e_attachments(filing, xml_tree)
             _save_models([filing])
@@ -200,6 +242,7 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             _save_models(schedule_a2_attachments)
             _save_models(schedule_b_attachments)
             _save_models(schedule_c1_attachments)
+            _save_models(schedule_c2_attachments)
         except Exception:  # pylint: disable=broad-except
             transaction.rollback()
             logger.exception(f'Failed to parse filing {filing_id}!')

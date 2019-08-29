@@ -4,7 +4,7 @@ from uuid import UUID
 
 import pytest
 
-from ..models import Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1
+from ..models import Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2
 from ..parsers import parse_filing
 
 
@@ -173,4 +173,28 @@ def test_parse_schedule_c1():
         gross_income_received='10001-100000',
         name_of_income_source='Rental Property',
         reason_for_income='rental_income',
+    )
+
+
+@pytest.mark.usefixtures("reset_database")
+def test_parse_schedule_c2():
+    filing = _parse_filing('178665313')
+
+    schedule_c2_attachments = ScheduleC2.select()
+    assert len(schedule_c2_attachments) == 1
+
+    assert schedule_c2_attachments[0] == ScheduleC2(
+        id=UUID('0edb096b-b390-4629-9afe-2393ac5fc1f0'),
+        filing=filing,
+        address_city='Irving',
+        address_state='TX',
+        address_zip='75063',
+        business_activity='Mr. Cooper 4000 Horison Way Irving, Texas 75063',
+        has_interest_rate=True,
+        highest_balance='100000+',
+        interest_rate=4.8,
+        loan_security='none',
+        name_of_lender='Mr. Cooper 4000 Horison Way Irving, Texas 75063',
+        term=360,
+        term_type='month'
     )
