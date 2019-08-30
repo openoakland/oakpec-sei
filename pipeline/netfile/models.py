@@ -115,7 +115,7 @@ class ScheduleA2(BaseModel):
     business_position = CharField(null=True, default=None)
     date_acquired = TimestampField(null=True, utc=True, default=None)
     date_disposed = TimestampField(null=True, utc=True, default=None)
-    description = CharField()
+    description = CharField(null=True, default=None)
     entity_name = CharField()
     fair_market_value = CharField(choices=fair_market_value_choices)
     gross_income_received = CharField(choices=gross_income_received_choices)
@@ -142,7 +142,7 @@ class ScheduleB(BaseModel):
     date_acquired = TimestampField(null=True, utc=True, default=None)
     date_disposed = TimestampField(null=True, utc=True, default=None)
     fair_market_value = CharField(choices=fair_market_value_choices)
-    gross_income_received = CharField(choices=gross_income_received_choices)
+    gross_income_received = CharField(choices=gross_income_received_choices, null=True, default=None)
     nature_of_interest = CharField(choices=nature_of_interest_choices)
     parcel_or_address = CharField()
 
@@ -170,7 +170,7 @@ class ScheduleC1(BaseModel):
     business_position = CharField(null=True, default=None)
     gross_income_received = CharField(choices=gross_income_received_choices)
     name_of_income_source = CharField()
-    reason_for_income = CharField(choices=reason_for_income_choices)
+    reason_for_income = CharField(choices=reason_for_income_choices, null=True, default=None)
     reason_for_income_other = CharField(null=True, default=None)
 
     class Meta:
