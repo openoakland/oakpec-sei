@@ -4,7 +4,7 @@ from typing import List, Optional
 from uuid import UUID
 
 from .models import BaseModel, Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2, db
-from .utils import clean_boolean, clean_choice, clean_datetime, clean_integer, clean_string
+from .utils import clean_boolean, clean_choice, clean_datetime, clean_decimal, clean_integer, clean_string
 
 logger = logging.getLogger(__name__)
 
@@ -187,7 +187,7 @@ def _parse_schedule_c2_attachments(filing: Form700Filing, xml_tree: ET.Element) 
         if raw_interest_rate:
             raw_interest_rate = clean_string(raw_interest_rate.replace('%', ''))
             assert raw_interest_rate
-            interest_rate = float(raw_interest_rate)
+            interest_rate = clean_decimal(raw_interest_rate)
 
         attachment = ScheduleC2(
             id=UUID(find_and_clean_text(element, 'id')),
