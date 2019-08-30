@@ -5,7 +5,7 @@ from uuid import UUID
 
 from .models import (
     BaseModel, Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2, ScheduleD,
-    ScheduleDGift, db
+    ScheduleDGift, ScheduleE, db
 )
 from .utils import clean_boolean, clean_choice, clean_datetime, clean_decimal, clean_integer, clean_string
 
@@ -188,9 +188,7 @@ def _parse_schedule_c2_attachments(filing: Form700Filing, xml_tree: ET.Element) 
         interest_rate = None
         raw_interest_rate = find_and_clean_text(element, 'loan/interest_rate')
         if raw_interest_rate:
-            raw_interest_rate = clean_string(raw_interest_rate.replace('%', ''))
-            assert raw_interest_rate
-            interest_rate = clean_decimal(raw_interest_rate)
+            interest_rate = clean_decimal(clean_string(raw_interest_rate.replace('%', '')))
 
         attachment = ScheduleC2(
             id=UUID(find_and_clean_text(element, 'id')),
@@ -237,20 +235,46 @@ def _parse_schedule_d_attachments(filing: Form700Filing, xml_tree: ET.Element) -
 
         gift_elements = schedule_element.findall('gifts/gift')
         for gift_element in gift_elements:
-            raw_amount = find_and_clean_text(gift_element, 'amount')
-            assert raw_amount
-            amount = clean_decimal(raw_amount)
-
             gift = ScheduleDGift(
                 id=UUID(find_and_clean_text(gift_element, 'id')),
                 schedule=attachment,
-                amount=amount,
+                amount=clean_decimal(find_and_clean_text(gift_element, 'amount')),
                 description=find_and_clean_text(gift_element, 'description'),
                 gift_date=clean_datetime(find_and_clean_text(gift_element, 'gift_date')),
             )
             gifts.append(gift)
 
     return attachments, gifts
+
+
+def _parse_schedule_e_attachments(filing: Form700Filing, xml_tree: ET.Element) -> List[ScheduleE]:
+    attachments = []
+    elements = xml_tree.findall('schedule_es/schedule_e')
+    for element in elements:
+        attachment = ScheduleE(
+            id=UUID(find_and_clean_text(element, 'id')),
+            filing=filing,
+            address_city=find_and_clean_text(element, 'address/city'),
+            address_state=find_and_clean_text(element, 'address/state'),
+            address_zip=find_and_clean_text(element, 'address/zip'),
+            amount=clean_decimal(find_and_clean_text(element, 'amount')),
+            business_activity=find_and_clean_text(element, 'business_activity'),
+            end_date=clean_datetime(find_and_clean_text(element, 'end_date')),
+            is_nonprofit=clean_boolean(find_and_clean_text(element, 'is_nonprofit')),
+            is_other=clean_boolean(find_and_clean_text(element, 'is_other')),
+            made_speech=clean_boolean(find_and_clean_text(element, 'made_speech')),
+            name_of_source=find_and_clean_text(element, 'name_of_source'),
+            other_description=find_and_clean_text(element, 'other_description'),
+            start_date=clean_datetime(find_and_clean_text(element, 'start_date')),
+            travel_description=find_and_clean_text(element, 'travel_description'),
+            type_of_payment=clean_choice(
+                find_and_clean_text(element, 'type_of_payment'),
+                ScheduleE.type_of_payment_choices
+            ),
+        )
+        attachments.append(attachment)
+
+    return attachments
 
 
 def _save_models(instances: List[BaseModel]) -> None:
@@ -273,7 +297,7 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             schedule_c1_attachments = _parse_schedule_c1_attachments(filing, xml_tree)
             schedule_c2_attachments = _parse_schedule_c2_attachments(filing, xml_tree)
             schedule_d_attachments, schedule_d_gifts = _parse_schedule_d_attachments(filing, xml_tree)
-            # filing = _parse_schedule_e_attachments(filing, xml_tree)
+            schedule_e_attachments = _parse_schedule_e_attachments(filing, xml_tree)
             _save_models([filing])
             _save_models(offices)
             _save_models(schedule_a1_attachments)
@@ -283,6 +307,7 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             _save_models(schedule_c2_attachments)
             _save_models(schedule_d_attachments)
             _save_models(schedule_d_gifts)
+            _save_models(schedule_e_attachments)
         except Exception:  # pylint: disable=broad-except
             transaction.rollback()
             logger.exception(f'Failed to parse filing {filing_id}!')

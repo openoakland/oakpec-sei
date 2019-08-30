@@ -46,7 +46,7 @@ def clean_choice(s: Optional[str], choices: Sequence[str]) -> Optional[str]:
     return choices[int(s) - 1]
 
 
-def clean_decimal(s: str) -> Optional[decimal.Decimal]:
+def clean_decimal(s: Optional[str]) -> Optional[decimal.Decimal]:
     return decimal.Decimal(s) if s else None
 
 
