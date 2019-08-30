@@ -5,8 +5,11 @@ from uuid import UUID
 
 import pytest
 
-from ..models import Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2
+from ..models import (
+    Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2, ScheduleD, ScheduleDGift
+)
 from ..parsers import parse_filing
+from ..utils import TIMEZONE
 
 
 def read_filing(filing_id: str):
@@ -198,4 +201,33 @@ def test_parse_schedule_c2():
         name_of_lender='Mr. Cooper 4000 Horison Way Irving, Texas 75063',
         term=360,
         term_type='month'
+    )
+
+
+@pytest.mark.usefixtures("reset_database")
+def test_parse_schedule_d():
+    filing = _parse_filing('178032623')
+
+    schedule_d_attachments = ScheduleD.select()
+    assert len(schedule_d_attachments) == 1
+
+    attachment = schedule_d_attachments[0]
+    assert attachment == ScheduleD(
+        id=UUID('4ac70b1f-405d-4a09-b7bd-2ff4c7a1be71'),
+        filing=filing,
+        address_city='Oakland',
+        address_state='CA',
+        address_zip='94607',
+        business_activity=None,
+        name_of_source='Warriors Community Foundation',
+    )
+
+    assert len(attachment.gifts) == 1
+
+    assert attachment.gifts[0] == ScheduleDGift(
+        id=UUID('4c5a26b8-27df-49f3-81a8-109818bb7aee'),
+        schedule=attachment,
+        amount=Decimal('100.00'),
+        description='Ticket to Game',
+        gift_date=TIMEZONE.localize(datetime.datetime(2018, 2, 22, 0, 0, 0)).timestamp(),
     )
