@@ -71,7 +71,7 @@ def _get_type_for_field(field: Field) -> str:
     return {
         'bigint': 'INT64',
         'bool': 'BOOL',
-        'float': 'FLOAT64',
+        'decimal': 'NUMERIC',
         'int': 'INT64',
         'uuid': 'STRING',
         'varchar': 'STRING',

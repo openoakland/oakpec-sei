@@ -8,7 +8,7 @@ import logging
 import os
 from typing import Any, List, Tuple
 
-from peewee import BooleanField, CharField, FloatField, ForeignKeyField, IntegerField, Model, UUIDField
+from peewee import BooleanField, CharField, DecimalField, ForeignKeyField, IntegerField, Model, UUIDField
 from playhouse.dataset import DataSet
 from playhouse.sqlite_ext import SqliteExtDatabase, TimestampField
 
@@ -194,7 +194,7 @@ class ScheduleC2(BaseModel):
     business_activity = CharField(null=True, default=None)
     has_interest_rate = BooleanField()
     highest_balance = CharField(choices=highest_balance_choices)
-    interest_rate = FloatField()
+    interest_rate = DecimalField()
     loan_security = CharField(choices=loan_security_choices)
     name_of_lender = CharField()
     term = IntegerField()

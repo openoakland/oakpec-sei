@@ -1,3 +1,4 @@
+import decimal
 import re
 from typing import Optional, Sequence
 
@@ -38,6 +39,10 @@ def clean_choice(s: Optional[str], choices: Sequence[str]) -> Optional[str]:
         return None
 
     return choices[int(s) - 1]
+
+
+def clean_decimal(s: str) -> Optional[decimal.Decimal]:
+    return decimal.Decimal(s) if s else None
 
 
 def clean_string(s: Optional[str]) -> Optional[str]:
