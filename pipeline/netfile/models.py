@@ -8,7 +8,7 @@ import logging
 import os
 from typing import Any, List, Tuple
 
-from peewee import BooleanField, CharField, DecimalField, ForeignKeyField, IntegerField, Model, UUIDField
+from peewee import AutoField, BooleanField, CharField, DecimalField, ForeignKeyField, IntegerField, Model, UUIDField
 from playhouse.dataset import DataSet
 from playhouse.sqlite_ext import SqliteExtDatabase, TimestampField
 
@@ -43,10 +43,16 @@ class BaseModel(Model):
         database = db
 
     def __eq__(self, other: Any) -> bool:
-        if not super().__eq__(other):
-            return False
+        # NOTE: We intentionally don't call the parent method because
+        # we do NOT want to compare `AutoField` primary key values, which
+        # we only use for `internal_id`.
 
-        for field in self._meta.sorted_fields:
+        fields = self._meta.sorted_fields
+
+        for field in fields:
+            if field.name == 'internal_id':
+                continue
+
             self_value = getattr(self, field.name)
             other_value = getattr(other, field.name)
             if self_value != other_value:
@@ -80,6 +86,10 @@ class Office(BaseModel):
 
 class AbstractSchedule(BaseModel):
     """ Base class for schedules. """
+
+    # NOTE: This field only exists to support foreign keys
+    # between schedules and their nested data.
+    internal_id = AutoField()
     id = UUIDField()
     filing = ForeignKeyField(Form700Filing)
 
@@ -119,7 +129,7 @@ class ScheduleA2(AbstractSchedule):
     date_disposed = TimestampField(null=True, utc=True, default=None)
     description = CharField(null=True, default=None)
     entity_name = CharField()
-    fair_market_value = CharField(choices=fair_market_value_choices)
+    fair_market_value = CharField(choices=fair_market_value_choices, null=True, default=None)
     gross_income_received = CharField(choices=gross_income_received_choices)
     nature_of_investment = CharField(choices=nature_of_investment_choices)
     nature_of_investment_other_description = CharField(null=True)
@@ -180,6 +190,23 @@ class ScheduleC2(AbstractSchedule):
     name_of_lender = CharField()
     term = IntegerField()
     term_type = CharField()
+
+
+class ScheduleD(AbstractSchedule):
+    """ Gifts. """
+    address_city = CharField()
+    address_state = CharField()
+    address_zip = CharField()
+    business_activity = CharField(null=True, default=None)
+    name_of_source = CharField()
+
+
+class ScheduleDGift(BaseModel):
+    id = UUIDField()
+    schedule = ForeignKeyField(ScheduleD, backref='gifts')
+    amount = DecimalField(decimal_places=2)
+    description = CharField()
+    gift_date = IntegerField()
 
 
 def get_model_classes() -> List[Model]:

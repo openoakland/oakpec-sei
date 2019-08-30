@@ -1,9 +1,12 @@
 import logging
 import xml.etree.ElementTree as ET
-from typing import List, Optional
+from typing import List, Optional, Tuple
 from uuid import UUID
 
-from .models import BaseModel, Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2, db
+from .models import (
+    BaseModel, Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2, ScheduleD,
+    ScheduleDGift, db
+)
 from .utils import clean_boolean, clean_choice, clean_datetime, clean_decimal, clean_integer, clean_string
 
 logger = logging.getLogger(__name__)
@@ -215,6 +218,41 @@ def _parse_schedule_c2_attachments(filing: Form700Filing, xml_tree: ET.Element) 
     return attachments
 
 
+def _parse_schedule_d_attachments(filing: Form700Filing, xml_tree: ET.Element) -> \
+        Tuple[List[ScheduleD], List[ScheduleDGift]]:
+    attachments = []
+    gifts = []
+    elements = xml_tree.findall('schedule_ds/schedule_d')
+    for schedule_element in elements:
+        attachment = ScheduleD(
+            id=UUID(find_and_clean_text(schedule_element, 'id')),
+            filing=filing,
+            address_city=find_and_clean_text(schedule_element, 'address/city'),
+            address_state=find_and_clean_text(schedule_element, 'address/state'),
+            address_zip=find_and_clean_text(schedule_element, 'address/zip'),
+            business_activity=find_and_clean_text(schedule_element, 'business_activity'),
+            name_of_source=find_and_clean_text(schedule_element, 'name_of_source'),
+        )
+        attachments.append(attachment)
+
+        gift_elements = schedule_element.findall('gifts/gift')
+        for gift_element in gift_elements:
+            raw_amount = find_and_clean_text(gift_element, 'amount')
+            assert raw_amount
+            amount = clean_decimal(raw_amount)
+
+            gift = ScheduleDGift(
+                id=UUID(find_and_clean_text(gift_element, 'id')),
+                schedule=attachment,
+                amount=amount,
+                description=find_and_clean_text(gift_element, 'description'),
+                gift_date=clean_datetime(find_and_clean_text(gift_element, 'gift_date')),
+            )
+            gifts.append(gift)
+
+    return attachments, gifts
+
+
 def _save_models(instances: List[BaseModel]) -> None:
     for instance in instances:
         instance.save(force_insert=True)
@@ -234,7 +272,7 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             schedule_b_attachments = _parse_schedule_b_attachments(filing, xml_tree)
             schedule_c1_attachments = _parse_schedule_c1_attachments(filing, xml_tree)
             schedule_c2_attachments = _parse_schedule_c2_attachments(filing, xml_tree)
-            # filing = _parse_schedule_d_attachments(filing, xml_tree)
+            schedule_d_attachments, schedule_d_gifts = _parse_schedule_d_attachments(filing, xml_tree)
             # filing = _parse_schedule_e_attachments(filing, xml_tree)
             _save_models([filing])
             _save_models(offices)
@@ -243,6 +281,8 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             _save_models(schedule_b_attachments)
             _save_models(schedule_c1_attachments)
             _save_models(schedule_c2_attachments)
+            _save_models(schedule_d_attachments)
+            _save_models(schedule_d_gifts)
         except Exception:  # pylint: disable=broad-except
             transaction.rollback()
             logger.exception(f'Failed to parse filing {filing_id}!')

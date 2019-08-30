@@ -1,0 +1,239 @@
+<disclosure agency="NetFile" type="netfile.render.fppc._2019.RenderableFppc700" version="1.0">
+  <current_page>0</current_page>
+  <hide_signature_names>false</hide_signature_names>
+  <show_blank_pages>false</show_blank_pages>
+  <show_draft>false</show_draft>
+  <show_redacted>true</show_redacted>
+  <report_year>2018</report_year>
+  <total_pages>5</total_pages>
+  <x_position />
+  <y_position />
+  <cover>
+    <first_name>Kyra</first_name>
+    <jurisdiction>
+      <description_city>Oakland</description_city>
+      <is_city>true</is_city>
+      <is_county>false</is_county>
+      <is_judge_or_court>false</is_judge_or_court>
+      <is_multi_county>false</is_multi_county>
+      <is_other>false</is_other>
+      <is_state>false</is_state>
+      <id>8fc8723a-9efe-4b6f-a9cf-87bb451adcfc</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </jurisdiction>
+    <last_name>Mungia</last_name>
+    <middle_name>Headley</middle_name>
+    <offices count="2">
+      <office>
+        <agency>City of Oakland</agency>
+        <assuming_date />
+        <division_board_district>01111  - Mayor - Administration Unit</division_board_district>
+        <election_date />
+        <is_primary>false</is_primary>
+        <leaving_date />
+        <lowest_similarity>0</lowest_similarity>
+        <position>Program Manager, Education</position>
+        <source>1</source>
+        <id>ea3cba4a-5d0f-408d-b706-205a2673a87a</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </office>
+      <office>
+        <agency>City of Oakland</agency>
+        <assuming_date />
+        <division_board_district>01111 - Mayor - Administration Unit</division_board_district>
+        <election_date />
+        <is_primary>true</is_primary>
+        <leaving_date />
+        <lowest_similarity>0</lowest_similarity>
+        <position>Project Director, Education</position>
+        <source>1</source>
+        <id>dae957b4-a1f0-49b2-a372-53880210e8a7</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </office>
+    </offices>
+    <statement_type>
+      <annual_start_date />
+      <date_assumed />
+      <is_annual>true</is_annual>
+      <is_assuming>false</is_assuming>
+      <is_candidate>false</is_candidate>
+      <is_leaving>false</is_leaving>
+      <leaving_left_office />
+      <leaving_start_date />
+      <candidate_election_date />
+      <id>fabcdae7-e5d1-4e5b-ab18-cf62dfeda187</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </statement_type>
+    <verification>
+      <date_signed>03/19/2019 09:47:30</date_signed>
+      <mailing_address>
+        <city>Oakland</city>
+        <state>CA</state>
+        <zip>94611</zip>
+      </mailing_address>
+      <phone />
+      <signature>Kyra Headley Mungia</signature>
+      <id>a27c19ff-8f31-4bba-b545-ef4a6539c0db</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </verification>
+    <id>bd8d09bf-a644-493b-bcdc-00bfab698368</id>
+    <version_for_add>0</version_for_add>
+    <version_for_delete>0</version_for_delete>
+    <version_for_edit>0</version_for_edit>
+  </cover>
+  <form_tool_hash>1243462</form_tool_hash>
+  <has_loaded_offices_from_admin>true</has_loaded_offices_from_admin>
+  <schedule_a_1s count="0" />
+  <schedule_a_2s count="0" />
+  <schedule_bs count="0" />
+  <schedule_c_1s count="2">
+    <schedule_c_1>
+      <address>
+        <city>Oakland</city>
+        <state>CA</state>
+        <zip>94612</zip>
+      </address>
+      <business_position>Program Manager, Education</business_position>
+      <gross_income_received_schedule_c_1>4</gross_income_received_schedule_c_1>
+      <income_sources count="0" />
+      <name_of_income_source>Oakland Education Fund</name_of_income_source>
+      <reason_for_income>1</reason_for_income>
+      <id>2cf74733-c936-4373-8ecf-b337dc97f1d0</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_c_1>
+    <schedule_c_1>
+      <address>
+        <city>Oakland</city>
+        <state>CA</state>
+        <zip>94607</zip>
+      </address>
+      <business_position>Education Project Director</business_position>
+      <gross_income_received_schedule_c_1>4</gross_income_received_schedule_c_1>
+      <income_sources count="0" />
+      <name_of_income_source>Oakland Public Education Fund</name_of_income_source>
+      <reason_for_income>1</reason_for_income>
+      <id>1675387e-1be4-42cf-992e-8bc8f841590c</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_c_1>
+  </schedule_c_1s>
+  <schedule_c_2s count="0" />
+  <schedule_ds count="1">
+    <schedule_d>
+      <address>
+        <city>Oakland</city>
+        <state>CA</state>
+        <zip>94607</zip>
+      </address>
+      <gifts count="1">
+        <gift>
+          <amount>100</amount>
+          <description>Ticket to Game</description>
+          <gift_date>02/22/2018 00:00:00</gift_date>
+          <id>4c5a26b8-27df-49f3-81a8-109818bb7aee</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </gift>
+      </gifts>
+      <name_of_source>Warriors Community Foundation</name_of_source>
+      <id>4ac70b1f-405d-4a09-b7bd-2ff4c7a1be71</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_d>
+  </schedule_ds>
+  <schedule_es count="3">
+    <schedule_e>
+      <address>
+        <city>Washington</city>
+        <state>DC</state>
+        <zip>20001</zip>
+      </address>
+      <amount>0</amount>
+      <business_activity>Travel and Lodging for Conference</business_activity>
+      <end_date>09/26/2018 00:00:00</end_date>
+      <is_nonprofit>false</is_nonprofit>
+      <is_other>true</is_other>
+      <made_speech>false</made_speech>
+      <name_of_source>National League of Cities</name_of_source>
+      <other_description>Participated in Conference</other_description>
+      <start_date>09/23/2018 00:00:00</start_date>
+      <travel_description>New Orleans, Louisiana</travel_description>
+      <type_of_payment>1</type_of_payment>
+      <id>a5723c51-4826-4813-9b98-b43d61af8ad8</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_e>
+    <schedule_e>
+      <address>
+        <city>Cambridge</city>
+        <state>MA</state>
+        <zip>02138</zip>
+      </address>
+      <amount>0</amount>
+      <business_activity>Travel and Lodging for Conference</business_activity>
+      <end_date>10/10/2018 00:00:00</end_date>
+      <is_nonprofit>true</is_nonprofit>
+      <is_other>true</is_other>
+      <made_speech>false</made_speech>
+      <name_of_source>Harvard Graduate School of Education</name_of_source>
+      <other_description>Participated in Conference</other_description>
+      <start_date>10/08/2018 00:00:00</start_date>
+      <travel_description>Cambridge, MA</travel_description>
+      <type_of_payment>1</type_of_payment>
+      <id>0db54b8d-772b-4e71-a83e-0f2d43a7f5e6</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_e>
+    <schedule_e>
+      <address>
+        <city>Cambridge</city>
+        <state>MA</state>
+        <zip>02138</zip>
+      </address>
+      <amount>0</amount>
+      <business_activity>Travel and Lodging for Conference</business_activity>
+      <end_date>11/30/2018 00:00:00</end_date>
+      <is_nonprofit>true</is_nonprofit>
+      <is_other>true</is_other>
+      <made_speech>false</made_speech>
+      <name_of_source>Harvard Graduate School of Education</name_of_source>
+      <other_description>Participated in Conference</other_description>
+      <start_date>11/25/2018 00:00:00</start_date>
+      <travel_description>Cambridge, MA</travel_description>
+      <type_of_payment>1</type_of_payment>
+      <id>e92e519c-9ad1-4dac-8d80-295ae2040ace</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_e>
+  </schedule_es>
+  <e_filing_as_filing_of_record_allowed>true</e_filing_as_filing_of_record_allowed>
+  <filing_information>
+    <amendment_sequence_number>0</amendment_sequence_number>
+    <amendment_superceded_filing_date>01/01/0001</amendment_superceded_filing_date>
+    <creation_date>01/01/0001 00:00:00</creation_date>
+    <filer_id>COAK-154314</filer_id>
+    <filing_date>01/01/0001</filing_date>
+    <form_tool_hash>1243462</form_tool_hash>
+    <s_a_n>021300008-NFH-0008</s_a_n>
+    <software_name>NetFile Web SEI</software_name>
+    <software_version>2.0</software_version>
+  </filing_information>
+</disclosure>

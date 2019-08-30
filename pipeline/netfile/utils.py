@@ -1,9 +1,12 @@
 import decimal
+import logging
 import re
 from typing import Optional, Sequence
 
 import pytz
 from dateutil.parser import parse
+
+logger = logging.getLogger(__name__)
 
 TIMEZONE = pytz.timezone('America/Los_Angeles')
 
@@ -27,10 +30,12 @@ def clean_datetime(s: Optional[str]) -> Optional[int]:
 
     try:
         dt = parse(s)
-        dt = TIMEZONE.localize(dt)
+        if dt.tzinfo is None:
+            dt = TIMEZONE.localize(dt)
         dt = dt.astimezone(pytz.utc)
         return int(dt.timestamp())
     except ValueError:
+        logger.exception('Failed to clean datetime: %s', s)
         return None
 
 
@@ -56,4 +61,8 @@ def clean_integer(s: Optional[str]) -> Optional[int]:
     if s is None:
         return None
 
-    return int(s)
+    try:
+        return int(s)
+    except ValueError:
+        logger.exception('Failed to clean integer: %s', s)
+        return None
