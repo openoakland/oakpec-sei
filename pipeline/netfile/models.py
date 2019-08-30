@@ -78,14 +78,23 @@ class Office(BaseModel):
     leaving_date = TimestampField(null=True, utc=True, default=None)
 
 
-class ScheduleA1(BaseModel):
+class AbstractSchedule(BaseModel):
+    """ Base class for schedules. """
+    id = UUIDField()
+    filing = ForeignKeyField(Form700Filing)
+
+    class Meta:
+        indexes = (
+            (('id', 'filing'), True),
+        )
+
+
+class ScheduleA1(AbstractSchedule):
     """ Investments (stocks, bonds, and other interests). Ownership less than 10%. """
     fair_market_value_choices = ('2000-10000', '10001-100000', '100001-1000000', '1000000+')
     nature_of_investment_choices = ('stock', 'partnership', 'other',)
     partnership_amount_choices = ('0-499', '500+')
 
-    id = UUIDField()
-    filing = ForeignKeyField(Form700Filing, backref='schedule_a1_attachments')
     date_acquired = TimestampField(null=True, utc=True, default=None)
     date_disposed = TimestampField(null=True, utc=True, default=None)
     name_of_business_entity = CharField()
@@ -95,20 +104,13 @@ class ScheduleA1(BaseModel):
     nature_of_investment_other_description = CharField(null=True)
     partnership_amount = CharField(choices=partnership_amount_choices, null=True)
 
-    class Meta:
-        indexes = (
-            (('id', 'filing'), True),
-        )
 
-
-class ScheduleA2(BaseModel):
+class ScheduleA2(AbstractSchedule):
     """ Investments, income, and assets of business entities/trusts. Ownership 10% or greater. """
     fair_market_value_choices = ('0-1999', '2000-10000', '10001-100000', '100001-1000000', '1000000+')
     gross_income_received_choices = ('0-499', '500-1000', '1001-10000', '10001-100000', '100000+')
     nature_of_investment_choices = ('sole_proprietorship', 'partnership', 'other',)
 
-    id = UUIDField()
-    filing = ForeignKeyField(Form700Filing, backref='schedule_a2_attachments')
     address_city = CharField()
     address_state = CharField()
     address_zip = CharField()
@@ -122,22 +124,15 @@ class ScheduleA2(BaseModel):
     nature_of_investment = CharField(choices=nature_of_investment_choices)
     nature_of_investment_other_description = CharField(null=True)
 
-    class Meta:
-        indexes = (
-            (('id', 'filing'), True),
-        )
-
 
 # TODO Parse income sources
 # TODO Parse loan data
-class ScheduleB(BaseModel):
+class ScheduleB(AbstractSchedule):
     """ Interests in real property, including rental income. """
     fair_market_value_choices = ('2000-10000', '10001-100000', '100001-1000000', '1000000+')
     gross_income_received_choices = ('0-499', '500-1000', '1001-10000', '10001-100000', '100000+')
     nature_of_interest_choices = ('ownership', 'easement', 'leasehold', 'other')
 
-    id = UUIDField()
-    filing = ForeignKeyField(Form700Filing, backref='schedule_b_attachments')
     city = CharField()
     date_acquired = TimestampField(null=True, utc=True, default=None)
     date_disposed = TimestampField(null=True, utc=True, default=None)
@@ -146,14 +141,9 @@ class ScheduleB(BaseModel):
     nature_of_interest = CharField(choices=nature_of_interest_choices)
     parcel_or_address = CharField()
 
-    class Meta:
-        indexes = (
-            (('id', 'filing'), True),
-        )
-
 
 # TODO Process income_sources
-class ScheduleC1(BaseModel):
+class ScheduleC1(AbstractSchedule):
     """ Income received. """
     gross_income_received_choices = ('none', '500-1000', '1001-10000', '10001-100000', '100000+')
     # NOTE: This order is NOT the same as that printed on the form!
@@ -161,8 +151,6 @@ class ScheduleC1(BaseModel):
         'salary', 'spouse_income', 'loan_repayment', 'partnership', 'sale', 'other', 'commission', 'rental_income',
     )
 
-    id = UUIDField()
-    filing = ForeignKeyField(Form700Filing, backref='schedule_c1_attachments')
     address_city = CharField()
     address_state = CharField()
     address_zip = CharField()
@@ -173,21 +161,14 @@ class ScheduleC1(BaseModel):
     reason_for_income = CharField(choices=reason_for_income_choices, null=True, default=None)
     reason_for_income_other = CharField(null=True, default=None)
 
-    class Meta:
-        indexes = (
-            (('id', 'filing'), True),
-        )
-
 
 # TODO Parse loan security text fields
 # TODO Parse comments
-class ScheduleC2(BaseModel):
+class ScheduleC2(AbstractSchedule):
     """ Loans received. """
     highest_balance_choices = ('500-1000', '1001-10000', '10001-100000', '100000+')
     loan_security_choices = ('none', 'personal_residence', 'real_property', 'guarantor', 'other')
 
-    id = UUIDField()
-    filing = ForeignKeyField(Form700Filing, backref='schedule_c2_attachments')
     address_city = CharField()
     address_state = CharField()
     address_zip = CharField()
@@ -200,16 +181,18 @@ class ScheduleC2(BaseModel):
     term = IntegerField()
     term_type = CharField()
 
-    class Meta:
-        indexes = (
-            (('id', 'filing'), True),
-        )
+
+def get_model_classes() -> List[Model]:
+    classes = [cls for cls in BaseModel.__subclasses__()]
+    classes += [cls for cls in AbstractSchedule.__subclasses__()]
+    classes.remove(AbstractSchedule)
+    return classes
 
 
 def build_tables():
     close_connection()
     db.connect(reuse_if_open=True)
-    db.create_tables([cls for cls in BaseModel.__subclasses__()])
+    db.create_tables(get_model_classes())
 
 
 def _table_to_csv(dataset: DataSet, table_name: str) -> io.StringIO:
@@ -223,6 +206,6 @@ def _table_to_csv(dataset: DataSet, table_name: str) -> io.StringIO:
 def export_data_to_csv() -> List[Tuple[Model, io.StringIO]]:
     db.close()
     dataset = DataSet(f'sqlite:///{DATABASE}')
-    models: List[Model] = [cls for cls in BaseModel.__subclasses__()]
+    models = get_model_classes()
     # pylint: disable=protected-access
     return [(model, _table_to_csv(dataset, model._meta.table_name)) for model in models]
