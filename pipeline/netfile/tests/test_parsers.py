@@ -6,7 +6,8 @@ from uuid import UUID
 import pytest
 
 from ..models import (
-    Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2, ScheduleD, ScheduleDGift
+    Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2, ScheduleD, ScheduleDGift,
+    ScheduleE
 )
 from ..parsers import parse_filing
 from ..utils import TIMEZONE
@@ -230,4 +231,67 @@ def test_parse_schedule_d():
         amount=Decimal('100.00'),
         description='Ticket to Game',
         gift_date=TIMEZONE.localize(datetime.datetime(2018, 2, 22, 0, 0, 0)).timestamp(),
+    )
+
+
+@pytest.mark.usefixtures("reset_database")
+def test_parse_schedule_e():
+    filing = _parse_filing('178032623')
+
+    schedule_e_attachments = ScheduleE.select()
+    assert len(schedule_e_attachments) == 3
+
+    assert schedule_e_attachments[0] == ScheduleE(
+        id=UUID('a5723c51-4826-4813-9b98-b43d61af8ad8'),
+        filing=filing,
+        address_city='Washington',
+        address_state='DC',
+        address_zip='20001',
+        amount=Decimal(0),
+        business_activity='Travel and Lodging for Conference',
+        end_date=TIMEZONE.localize(datetime.datetime(2018, 9, 26, 0, 0, 0)).timestamp(),
+        is_nonprofit=False,
+        is_other=True,
+        made_speech=False,
+        name_of_source='National League of Cities',
+        other_description='Participated in Conference',
+        start_date=TIMEZONE.localize(datetime.datetime(2018, 9, 23, 0, 0, 0)).timestamp(),
+        travel_description='New Orleans, Louisiana',
+        type_of_payment='gift',
+    )
+    assert schedule_e_attachments[1] == ScheduleE(
+        id=UUID('0db54b8d-772b-4e71-a83e-0f2d43a7f5e6'),
+        filing=filing,
+        address_city='Cambridge',
+        address_state='MA',
+        address_zip='02138',
+        amount=Decimal(0),
+        business_activity='Travel and Lodging for Conference',
+        end_date=TIMEZONE.localize(datetime.datetime(2018, 10, 10, 0, 0, 0)).timestamp(),
+        is_nonprofit=True,
+        is_other=True,
+        made_speech=False,
+        name_of_source='Harvard Graduate School of Education',
+        other_description='Participated in Conference',
+        start_date=TIMEZONE.localize(datetime.datetime(2018, 10, 8, 0, 0, 0)).timestamp(),
+        travel_description='Cambridge, MA',
+        type_of_payment='gift',
+    )
+    assert schedule_e_attachments[2] == ScheduleE(
+        id=UUID('e92e519c-9ad1-4dac-8d80-295ae2040ace'),
+        filing=filing,
+        address_city='Cambridge',
+        address_state='MA',
+        address_zip='02138',
+        amount=Decimal(0),
+        business_activity='Travel and Lodging for Conference',
+        end_date=TIMEZONE.localize(datetime.datetime(2018, 11, 30, 0, 0, 0)).timestamp(),
+        is_nonprofit=True,
+        is_other=True,
+        made_speech=False,
+        name_of_source='Harvard Graduate School of Education',
+        other_description='Participated in Conference',
+        start_date=TIMEZONE.localize(datetime.datetime(2018, 11, 25, 0, 0, 0)).timestamp(),
+        travel_description='Cambridge, MA',
+        type_of_payment='gift',
     )

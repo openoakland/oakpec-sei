@@ -64,7 +64,7 @@ def get_filing_ids(form_type: int) -> Set[str]:
                 filings.add(filing_id)
             else:
                 ignored_filings.add(filing_id)
-                logger.info(f'Ignoring filing {filing_id}. This willing was not filed electronically.')
+                logger.info(f'Ignoring filing {filing_id}. This filing was not filed electronically.')
 
         page += 1
 

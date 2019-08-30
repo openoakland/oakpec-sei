@@ -209,6 +209,25 @@ class ScheduleDGift(BaseModel):
     gift_date = IntegerField()
 
 
+class ScheduleE(AbstractSchedule):
+    """ Income from gifts, travel payments, advances, and reimbursements. """
+    type_of_payment_choices = ('gift', 'income')
+
+    address_city = CharField()
+    address_state = CharField()
+    address_zip = CharField()
+    amount = DecimalField(decimal_places=2)
+    business_activity = CharField(null=True, default=None)
+    end_date = IntegerField()
+    is_nonprofit = BooleanField()
+    is_other = BooleanField()
+    made_speech = BooleanField()
+    name_of_source = CharField()
+    start_date = IntegerField()
+    travel_description = CharField(null=True, default=None)
+    type_of_payment = CharField(choices=type_of_payment_choices)
+
+
 def get_model_classes() -> List[Model]:
     classes = [cls for cls in BaseModel.__subclasses__()]
     classes += [cls for cls in AbstractSchedule.__subclasses__()]
