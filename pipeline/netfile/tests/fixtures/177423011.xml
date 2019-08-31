@@ -1,0 +1,235 @@
+<disclosure agency="NetFile" type="netfile.render.fppc._2019.RenderableFppc700" version="1.0">
+  <current_page>0</current_page>
+  <hide_signature_names>false</hide_signature_names>
+  <show_blank_pages>false</show_blank_pages>
+  <show_draft>false</show_draft>
+  <show_redacted>true</show_redacted>
+  <report_year>2018</report_year>
+  <total_pages>5</total_pages>
+  <x_position />
+  <y_position />
+  <cover>
+    <first_name>Peter</first_name>
+    <jurisdiction>
+      <description_city>oakland</description_city>
+      <is_city>true</is_city>
+      <is_county>false</is_county>
+      <is_judge_or_court>false</is_judge_or_court>
+      <is_multi_county>false</is_multi_county>
+      <is_other>false</is_other>
+      <is_state>false</is_state>
+      <id>f4d94fe3-31ab-4169-9a23-930bd0456d78</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </jurisdiction>
+    <last_name>Fong</last_name>
+    <offices count="2">
+      <office>
+        <agency>PWA</agency>
+        <assuming_date />
+        <election_date />
+        <is_primary>false</is_primary>
+        <leaving_date />
+        <lowest_similarity>35</lowest_similarity>
+        <position>Electrical Engineer II</position>
+        <source>2</source>
+        <id>2d2b1894-dadb-4083-ab00-89a064e2a4c8</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </office>
+      <office>
+        <agency>City of Oakland</agency>
+        <assuming_date />
+        <division_board_district>30689 - Env Svcs Engergy Group</division_board_district>
+        <election_date />
+        <is_primary>true</is_primary>
+        <leaving_date />
+        <lowest_similarity>2</lowest_similarity>
+        <position>Electrical Engineer II</position>
+        <source>0</source>
+        <id>f99fb736-346a-4f68-832e-2a34cf088041</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </office>
+    </offices>
+    <statement_type>
+      <annual_start_date />
+      <date_assumed />
+      <is_annual>true</is_annual>
+      <is_assuming>false</is_assuming>
+      <is_candidate>false</is_candidate>
+      <is_leaving>false</is_leaving>
+      <leaving_left_office />
+      <leaving_start_date />
+      <candidate_election_date />
+      <id>c5441ecc-e08a-4ab3-92b6-7b5d0150e402</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </statement_type>
+    <verification>
+      <date_signed>03/04/2019 13:38:50</date_signed>
+      <mailing_address>
+        <city>Walnut Creek</city>
+        <state>CA</state>
+        <zip>94596</zip>
+      </mailing_address>
+      <phone />
+      <signature>Peter Fong</signature>
+      <id>67a1e334-dcd3-4965-9ebf-a053e788397d</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </verification>
+    <id>02517e14-5e01-4f2f-bfbe-e62aee2d9347</id>
+    <version_for_add>0</version_for_add>
+    <version_for_delete>0</version_for_delete>
+    <version_for_edit>0</version_for_edit>
+  </cover>
+  <form_tool_hash>1235819</form_tool_hash>
+  <has_loaded_offices_from_admin>true</has_loaded_offices_from_admin>
+  <schedule_a_1s count="1">
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>stock holdings</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>TD Ameritrade</name_of_business_entity>
+      <nature_of_investment>1</nature_of_investment>
+      <partnership_amount>0</partnership_amount>
+      <id>b3d4573b-edcb-47c6-8826-fa6f2fb8b86a</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+  </schedule_a_1s>
+  <schedule_a_2s count="0" />
+  <schedule_bs count="0" />
+  <schedule_c_1s count="3">
+    <schedule_c_1>
+      <address>
+        <city>Oakland</city>
+        <state>ca</state>
+        <zip>94612</zip>
+      </address>
+      <business_position>Electrical Engineer</business_position>
+      <gross_income_received_schedule_c_1>5</gross_income_received_schedule_c_1>
+      <income_sources count="0" />
+      <name_of_income_source>City of Oakland</name_of_income_source>
+      <reason_for_income>1</reason_for_income>
+      <id>2ae898ab-2a11-426e-8fb1-68cbae05fa91</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_c_1>
+    <schedule_c_1>
+      <address>
+        <city>walnut creek</city>
+        <state>ca</state>
+        <zip>94596</zip>
+      </address>
+      <business_position>Speech Therapist</business_position>
+      <gross_income_received_schedule_c_1>4</gross_income_received_schedule_c_1>
+      <income_sources count="0" />
+      <name_of_income_source>Walnut Creek School District</name_of_income_source>
+      <reason_for_income>2</reason_for_income>
+      <id>40411b6f-a6b1-4067-b7c9-efd6cc9bb1fb</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_c_1>
+    <schedule_c_1>
+      <address>
+        <city>Salt Lake City</city>
+        <state>UT</state>
+        <zip>84113</zip>
+      </address>
+      <business_position>REPLO Region IX</business_position>
+      <gross_income_received_schedule_c_1>4</gross_income_received_schedule_c_1>
+      <income_sources count="0" />
+      <name_of_income_source>United States Army Reserves</name_of_income_source>
+      <reason_for_income>1</reason_for_income>
+      <id>0f340194-d0ba-4651-9458-1db6f955b90c</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_c_1>
+  </schedule_c_1s>
+  <schedule_c_2s count="2">
+    <schedule_c_2>
+      <loan>
+        <address>
+          <city>walnut creek</city>
+          <state>ca</state>
+          <zip>94596</zip>
+        </address>
+        <has_no_interest_rate>false</has_no_interest_rate>
+        <highest_balance>4</highest_balance>
+        <interest_rate>3.25</interest_rate>
+        <name_of_lender>Chase</name_of_lender>
+        <term>10</term>
+        <term_type>Year</term_type>
+        <id>faf0c6f8-91de-414a-b739-1bd1241b7e44</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </loan>
+      <loan_security>3</loan_security>
+      <loan_security_real_property_address>
+        <city>castro valley</city>
+        <state>ca</state>
+        <zip>94552</zip>
+      </loan_security_real_property_address>
+      <id>d48e2404-38a0-4a5c-aa15-16b556027f0c</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_c_2>
+    <schedule_c_2>
+      <loan>
+        <address>
+          <city>walnut creek</city>
+          <state>ca</state>
+          <zip>94596</zip>
+        </address>
+        <has_no_interest_rate>false</has_no_interest_rate>
+        <highest_balance>4</highest_balance>
+        <interest_rate>3.25</interest_rate>
+        <name_of_lender>Chase Bank</name_of_lender>
+        <term>10</term>
+        <term_type>Year</term_type>
+        <id>41e3804c-457f-4407-af84-61ef085df6f1</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </loan>
+      <loan_security>3</loan_security>
+      <loan_security_real_property_address>
+        <city>castro valley</city>
+        <state>c</state>
+        <zip>94552</zip>
+      </loan_security_real_property_address>
+      <id>08ccab8c-23aa-4d13-a199-f9db5f55e0bb</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_c_2>
+  </schedule_c_2s>
+  <schedule_ds count="0" />
+  <schedule_es count="0" />
+  <e_filing_as_filing_of_record_allowed>true</e_filing_as_filing_of_record_allowed>
+  <filing_information>
+    <amendment_sequence_number>0</amendment_sequence_number>
+    <amendment_superceded_filing_date>01/01/0001</amendment_superceded_filing_date>
+    <creation_date>01/01/0001 00:00:00</creation_date>
+    <filer_id>COAK-151676</filer_id>
+    <filing_date>01/01/0001</filing_date>
+    <form_tool_hash>1235819</form_tool_hash>
+    <s_a_n>021300008-NFH-0008</s_a_n>
+    <software_name>NetFile Web SEI</software_name>
+    <software_version>2.0</software_version>
+  </filing_information>
+</disclosure>

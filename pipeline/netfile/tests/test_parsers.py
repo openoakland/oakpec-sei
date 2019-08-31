@@ -196,26 +196,29 @@ def test_parse_schedule_c1():
 
 @pytest.mark.usefixtures("reset_database")
 def test_parse_schedule_c2():
-    filing = _parse_filing('178665313')
+    filing = _parse_filing('177423011')
 
     schedule_c2_attachments = ScheduleC2.select()
-    assert len(schedule_c2_attachments) == 1
+    assert len(schedule_c2_attachments) == 2
 
     assert schedule_c2_attachments[0] == ScheduleC2(
-        id=UUID('0edb096b-b390-4629-9afe-2393ac5fc1f0'),
+        id=UUID('d48e2404-38a0-4a5c-aa15-16b556027f0c'),
         filing=filing,
-        address_city='Irving',
-        address_state='TX',
-        address_zip='75063',
-        business_activity='Mr. Cooper 4000 Horison Way Irving, Texas 75063',
+        address_city='walnut creek',
+        address_state='ca',
+        address_zip='94596',
+        business_activity=None,
         has_interest_rate=True,
         highest_balance='100000+',
-        interest_rate=Decimal('4.8'),
-        interest_rate_raw='4.8 %',
-        loan_security='none',
-        name_of_lender='Mr. Cooper 4000 Horison Way Irving, Texas 75063',
-        term=360,
-        term_type='month'
+        interest_rate=Decimal('3.25'),
+        interest_rate_raw='3.25',
+        loan_security='real_property',
+        loan_security_real_property_address_city='castro valley',
+        loan_security_real_property_address_state='ca',
+        loan_security_real_property_address_zip='94552',
+        name_of_lender='Chase',
+        term=10,
+        term_type='year'
     )
 
 
