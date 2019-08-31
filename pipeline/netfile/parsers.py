@@ -5,8 +5,8 @@ from typing import List, Optional, Tuple
 from uuid import UUID
 
 from .models import (
-    BaseModel, Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2, ScheduleD,
-    ScheduleDGift, ScheduleE, db
+    BaseModel, Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleBIncomeSource, ScheduleC1, ScheduleC2,
+    ScheduleD, ScheduleDGift, ScheduleE, db
 )
 from .utils import clean_boolean, clean_choice, clean_datetime, clean_decimal, clean_integer, clean_string
 
@@ -126,8 +126,10 @@ def _parse_schedule_a2_attachments(filing: Form700Filing, xml_tree: ET.Element) 
     return attachments
 
 
-def _parse_schedule_b_attachments(filing: Form700Filing, xml_tree: ET.Element) -> List[ScheduleB]:
+def _parse_schedule_b_attachments(filing: Form700Filing, xml_tree: ET.Element) -> \
+        Tuple[List[ScheduleB], List[ScheduleBIncomeSource]]:
     attachments = []
+    income_sources = []
     elements = xml_tree.findall('schedule_bs/schedule_b')
     for element in elements:
         attachment = ScheduleB(
@@ -152,7 +154,15 @@ def _parse_schedule_b_attachments(filing: Form700Filing, xml_tree: ET.Element) -
         )
         attachments.append(attachment)
 
-    return attachments
+        for income_source_element in element.findall('income_sources/source'):
+            income_source = ScheduleBIncomeSource(
+                id=UUID(find_and_clean_text(income_source_element, 'id')),
+                schedule=attachment,
+                name=find_and_clean_text(income_source_element, 'name'),
+            )
+            income_sources.append(income_source)
+
+    return attachments, income_sources
 
 
 def _parse_schedule_c1_attachments(filing: Form700Filing, xml_tree: ET.Element) -> List[ScheduleA2]:
@@ -312,7 +322,7 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             offices = _parse_offices(filing, xml_tree)
             schedule_a1_attachments = _parse_schedule_a1_attachments(filing, xml_tree)
             schedule_a2_attachments = _parse_schedule_a2_attachments(filing, xml_tree)
-            schedule_b_attachments = _parse_schedule_b_attachments(filing, xml_tree)
+            schedule_b_attachments, schedule_b_income_sources = _parse_schedule_b_attachments(filing, xml_tree)
             schedule_c1_attachments = _parse_schedule_c1_attachments(filing, xml_tree)
             schedule_c2_attachments = _parse_schedule_c2_attachments(filing, xml_tree)
             schedule_d_attachments, schedule_d_gifts = _parse_schedule_d_attachments(filing, xml_tree)
@@ -322,6 +332,7 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
             _save_models(schedule_a1_attachments)
             _save_models(schedule_a2_attachments)
             _save_models(schedule_b_attachments)
+            _save_models(schedule_b_income_sources)
             _save_models(schedule_c1_attachments)
             _save_models(schedule_c2_attachments)
             _save_models(schedule_d_attachments)

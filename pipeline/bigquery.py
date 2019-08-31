@@ -7,8 +7,8 @@ from google.cloud.exceptions import GoogleCloudError
 from peewee import Field, Model
 
 from .netfile.models import (
-    Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2, ScheduleD, ScheduleDGift,
-    ScheduleE
+    Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleBIncomeSource, ScheduleC1, ScheduleC2, ScheduleD,
+    ScheduleDGift, ScheduleE
 )
 
 logger = logging.getLogger(__name__)
@@ -99,6 +99,7 @@ def _get_table_id_for_model(model: Model) -> str:
         ScheduleA1: 'schedule_a1_attachments',
         ScheduleA2: 'schedule_a2_attachments',
         ScheduleB: 'schedule_b_attachments',
+        ScheduleBIncomeSource: 'schedule_b_income_sources',
         ScheduleC1: 'schedule_c1_attachments',
         ScheduleC2: 'schedule_c2_attachments',
         ScheduleD: 'schedule_d_attachments',

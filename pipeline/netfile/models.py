@@ -137,7 +137,6 @@ class ScheduleA2(AbstractSchedule):
     nature_of_investment_other_description = CharField(null=True, default=None)
 
 
-# TODO Parse income sources
 # TODO Parse loan data
 class ScheduleB(AbstractSchedule):
     """ Interests in real property, including rental income. """
@@ -152,6 +151,12 @@ class ScheduleB(AbstractSchedule):
     gross_income_received = CharField(choices=gross_income_received_choices, null=True, default=None)
     nature_of_interest = CharField(choices=nature_of_interest_choices)
     parcel_or_address = CharField()
+
+
+class ScheduleBIncomeSource(BaseModel):
+    id = UUIDField()
+    schedule = ForeignKeyField(ScheduleB, backref='income_sources')
+    name = CharField()
 
 
 # TODO Process income_sources
@@ -172,6 +177,12 @@ class ScheduleC1(AbstractSchedule):
     name_of_income_source = CharField()
     reason_for_income = CharField(choices=reason_for_income_choices, null=True, default=None)
     reason_for_income_other = CharField(null=True, default=None)
+
+
+class ScheduleC1IncomeSource(BaseModel):
+    id = UUIDField()
+    schedule = ForeignKeyField(ScheduleC1, backref='income_sources')
+    name = CharField()
 
 
 class ScheduleC2(AbstractSchedule):
