@@ -86,6 +86,19 @@ def test_parse_filing():
 
 
 @pytest.mark.usefixtures("reset_database")
+def test_parse_filing_comments_schedule_b():
+    filing = _parse_filing('178774422')
+    assert filing.comments_schedule_b == 'Spouse is owner'
+
+
+@pytest.mark.usefixtures("reset_database")
+def test_parse_filing_comments_schedule_d():
+    filing = _parse_filing('178768108')
+    assert filing.comments_schedule_d == 'I think there are a few things missing from this list that I do not have ' \
+                                         'record of at the moment of filing.'
+
+
+@pytest.mark.usefixtures("reset_database")
 def test_parse_filing_duplicates():
     for filing_id in ('177199734', '177199959',):
         raw_xml = read_filing(filing_id)

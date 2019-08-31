@@ -1,0 +1,158 @@
+<disclosure agency="NetFile" type="netfile.render.fppc._2019.RenderableFppc700" version="1.0">
+  <current_page>0</current_page>
+  <hide_signature_names>false</hide_signature_names>
+  <show_blank_pages>false</show_blank_pages>
+  <show_draft>false</show_draft>
+  <show_redacted>true</show_redacted>
+  <report_year>2018</report_year>
+  <total_pages>2</total_pages>
+  <x_position />
+  <y_position />
+  <comments_schedule_d>I think there are a few things missing from this list that I do not have record of at the moment of filing.</comments_schedule_d>
+  <cover>
+    <first_name>Brianna</first_name>
+    <jurisdiction>
+      <description_city>Oakland</description_city>
+      <is_city>true</is_city>
+      <is_county>false</is_county>
+      <is_judge_or_court>false</is_judge_or_court>
+      <is_multi_county>false</is_multi_county>
+      <is_other>false</is_other>
+      <is_state>false</is_state>
+      <id>fca982c7-3338-47ca-a52b-efd14796f796</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </jurisdiction>
+    <last_name>Horton</last_name>
+    <middle_name>Nicole</middle_name>
+    <offices count="1">
+      <office>
+        <agency>CITY OF OAKLAND</agency>
+        <assuming_date />
+        <division_board_district>35111 - Director's Office</division_board_district>
+        <election_date />
+        <is_primary>true</is_primary>
+        <leaving_date />
+        <lowest_similarity>100</lowest_similarity>
+        <position>Exec Asst to the Director</position>
+        <source>0</source>
+        <id>d703beb8-dbbe-4d44-9270-2f98223c7ccc</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </office>
+    </offices>
+    <statement_type>
+      <annual_start_date>10/08/2017 00:00:00</annual_start_date>
+      <date_assumed />
+      <is_annual>true</is_annual>
+      <is_assuming>false</is_assuming>
+      <is_candidate>false</is_candidate>
+      <is_leaving>false</is_leaving>
+      <leaving_left_office />
+      <leaving_start_date />
+      <candidate_election_date />
+      <id>77c190c1-dc56-4fee-a334-92b3f23aa1c0</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </statement_type>
+    <verification>
+      <date_signed>04/01/2019 16:53:47</date_signed>
+      <mailing_address>
+        <city>Oakland</city>
+        <state>CA</state>
+        <zip>94608</zip>
+      </mailing_address>
+      <phone />
+      <signature>Brianna Nicole Horton</signature>
+      <id>582ccc0c-b668-4710-ac95-a19d9c9b5204</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </verification>
+    <id>19ebbc5e-ab8c-4e92-bbe3-2c6951e476c0</id>
+    <version_for_add>0</version_for_add>
+    <version_for_delete>0</version_for_delete>
+    <version_for_edit>0</version_for_edit>
+  </cover>
+  <form_tool_hash>1253211</form_tool_hash>
+  <has_loaded_offices_from_admin>true</has_loaded_offices_from_admin>
+  <schedule_a_1s count="0" />
+  <schedule_a_2s count="0" />
+  <schedule_bs count="0" />
+  <schedule_c_1s count="0" />
+  <schedule_c_2s count="0" />
+  <schedule_ds count="2">
+    <schedule_d>
+      <address>
+        <city>Oakland</city>
+        <state>CA</state>
+        <zip>94612</zip>
+      </address>
+      <gifts count="2">
+        <gift>
+          <amount>304.8</amount>
+          <description>Event Tickets</description>
+          <gift_date>04/22/2018 00:00:00</gift_date>
+          <id>1e0b0254-5148-4b19-8452-e2f34a089d83</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </gift>
+        <gift>
+          <amount>100</amount>
+          <description>Event Tickets - Price says $0.00</description>
+          <gift_date>08/07/2018 00:00:00</gift_date>
+          <id>6311e8e8-bcf4-43e1-b583-f786a5adbabd</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </gift>
+      </gifts>
+      <name_of_source>City Administrators Office
+</name_of_source>
+      <id>890507a8-148d-4ee9-8044-0a18f684ccb9</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_d>
+    <schedule_d>
+      <address>
+        <city>Oakland</city>
+        <state>CA</state>
+        <zip>94612</zip>
+      </address>
+      <gifts count="1">
+        <gift>
+          <amount>200</amount>
+          <description>Event Tickets</description>
+          <gift_date>07/22/2018 00:00:00</gift_date>
+          <id>f8850f03-b227-4be5-b0b2-7c0403584037</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </gift>
+      </gifts>
+      <name_of_source>City Council</name_of_source>
+      <id>6b8e41e6-2af2-417c-af26-0e5eb30bc7f4</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_d>
+  </schedule_ds>
+  <schedule_es count="0" />
+  <e_filing_as_filing_of_record_allowed>true</e_filing_as_filing_of_record_allowed>
+  <filing_information>
+    <amendment_sequence_number>0</amendment_sequence_number>
+    <amendment_superceded_filing_date>01/01/0001</amendment_superceded_filing_date>
+    <creation_date>01/01/0001 00:00:00</creation_date>
+    <filer_id>COAK-154572</filer_id>
+    <filing_date>01/01/0001</filing_date>
+    <form_tool_hash>1253211</form_tool_hash>
+    <s_a_n>021300008-NFH-0008</s_a_n>
+    <software_name>NetFile Web SEI</software_name>
+    <software_version>2.0</software_version>
+  </filing_information>
+</disclosure>

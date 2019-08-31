@@ -68,8 +68,10 @@ class Form700Filing(BaseModel):
     filer_id = CharField()
     date_signed = TimestampField(utc=True, default=None)
     first_name = CharField()
-    middle_name = CharField(null=True)
+    middle_name = CharField(null=True, default=None)
     last_name = CharField()
+    comments_schedule_b = CharField(null=True, default=None)
+    comments_schedule_d = CharField(null=True, default=None)
 
 
 class Office(BaseModel):
@@ -173,7 +175,6 @@ class ScheduleC1(AbstractSchedule):
 
 
 # TODO Parse loan security text fields
-# TODO Parse comments
 class ScheduleC2(AbstractSchedule):
     """ Loans received. """
     highest_balance_choices = ('500-1000', '1001-10000', '10001-100000', '100000+')
