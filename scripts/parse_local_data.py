@@ -1,11 +1,14 @@
 #!/usr/bin/python
 import os
+import re
+from pathlib import Path
 
-from pipeline.netfile.client import download_filing, get_filing_ids
 from pipeline.netfile.models import build_tables, destroy_database
+from pipeline.netfile.parsers import parse_filing
+
+FORM_TYPE = 254  # FPPC Form 700 Statement of Economic Interests (2018-2019)
 
 DIRECTORY_NAME = 'filings'
-FORM_TYPE = 254  # FPPC Form 700 Statement of Economic Interests (2018-2019)
 
 
 def _save_file(directory: str, filing_id: str, content: str) -> None:
@@ -19,18 +22,17 @@ def main():
     destroy_database()
     build_tables()
 
-    # Create the download directory
+    # Iterate over filings
     directory = os.path.join(os.path.dirname(__file__), DIRECTORY_NAME)
-    if not os.path.exists(directory):
-        os.makedirs(directory)
+    paths = Path(directory).glob('**/*.xml')
+    for path in paths:
+        match = re.search(r'(\d+)\.xml', str(path))
+        filing_id = match[1]
 
-    # Get a list of filing IDs
-    filing_ids = get_filing_ids(FORM_TYPE)
+        with open(str(path)) as f:
+            content = f.read()
 
-    # Download the filings
-    for filing_id in filing_ids:
-        content = download_filing(filing_id)
-        _save_file(directory, filing_id, content)
+        parse_filing(filing_id, content)
 
 
 if __name__ == '__main__':
