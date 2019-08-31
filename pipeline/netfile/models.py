@@ -131,8 +131,8 @@ class ScheduleA2(AbstractSchedule):
     entity_name = CharField()
     fair_market_value = CharField(choices=fair_market_value_choices, null=True, default=None)
     gross_income_received = CharField(choices=gross_income_received_choices)
-    nature_of_investment = CharField(choices=nature_of_investment_choices)
-    nature_of_investment_other_description = CharField(null=True)
+    nature_of_investment = CharField(choices=nature_of_investment_choices, null=True, default=None)
+    nature_of_investment_other_description = CharField(null=True, default=None)
 
 
 # TODO Parse income sources
@@ -186,6 +186,7 @@ class ScheduleC2(AbstractSchedule):
     has_interest_rate = BooleanField()
     highest_balance = CharField(choices=highest_balance_choices)
     interest_rate = DecimalField()
+    interest_rate_raw = CharField()
     loan_security = CharField(choices=loan_security_choices)
     name_of_lender = CharField()
     term = IntegerField()

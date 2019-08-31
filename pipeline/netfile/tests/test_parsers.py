@@ -198,6 +198,7 @@ def test_parse_schedule_c2():
         has_interest_rate=True,
         highest_balance='100000+',
         interest_rate=Decimal('4.8'),
+        interest_rate_raw='4.8 %',
         loan_security='none',
         name_of_lender='Mr. Cooper 4000 Horison Way Irving, Texas 75063',
         term=360,

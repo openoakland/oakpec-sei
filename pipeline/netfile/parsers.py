@@ -1,4 +1,5 @@
 import logging
+import re
 import xml.etree.ElementTree as ET
 from typing import List, Optional, Tuple
 from uuid import UUID
@@ -188,7 +189,10 @@ def _parse_schedule_c2_attachments(filing: Form700Filing, xml_tree: ET.Element) 
         interest_rate = None
         raw_interest_rate = find_and_clean_text(element, 'loan/interest_rate')
         if raw_interest_rate:
-            interest_rate = clean_decimal(clean_string(raw_interest_rate.replace('%', '')))
+            match = re.match(r'([\d\.]+)', raw_interest_rate)
+            assert match
+            raw_interest_rate = match[1]
+            interest_rate = clean_decimal(clean_string(raw_interest_rate))
 
         attachment = ScheduleC2(
             id=UUID(find_and_clean_text(element, 'id')),
@@ -203,6 +207,7 @@ def _parse_schedule_c2_attachments(filing: Form700Filing, xml_tree: ET.Element) 
                 ScheduleC2.highest_balance_choices
             ),
             interest_rate=interest_rate,
+            interest_rate_raw=find_and_clean_text(element, 'loan/interest_rate'),
             loan_security=clean_choice(
                 find_and_clean_text(element, 'loan_security'),
                 ScheduleC2.loan_security_choices
