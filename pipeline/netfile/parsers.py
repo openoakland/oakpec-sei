@@ -200,6 +200,10 @@ def _parse_schedule_c2_attachments(filing: Form700Filing, xml_tree: ET.Element) 
             raw_interest_rate = match[1]
             interest_rate = clean_decimal(clean_string(raw_interest_rate))
 
+        property_address_element = element.find('loan_security_real_property_address')
+        assert property_address_element is not None, \
+            f'loan_security_real_property_address element is missing from filing {filing.id}'
+
         attachment = ScheduleC2(
             id=UUID(find_and_clean_text(element, 'id')),
             filing=filing,
@@ -218,6 +222,9 @@ def _parse_schedule_c2_attachments(filing: Form700Filing, xml_tree: ET.Element) 
                 find_and_clean_text(element, 'loan_security'),
                 ScheduleC2.loan_security_choices
             ),
+            loan_security_real_property_address_city=find_and_clean_text(property_address_element, 'city'),
+            loan_security_real_property_address_state=find_and_clean_text(property_address_element, 'state'),
+            loan_security_real_property_address_zip=find_and_clean_text(property_address_element, 'zip'),
             name_of_lender=find_and_clean_text(element, 'loan/name_of_lender'),
             term=clean_integer(find_and_clean_text(element, 'loan/term')),
             term_type=term_type,

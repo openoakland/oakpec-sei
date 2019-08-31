@@ -174,7 +174,6 @@ class ScheduleC1(AbstractSchedule):
     reason_for_income_other = CharField(null=True, default=None)
 
 
-# TODO Parse loan security text fields
 class ScheduleC2(AbstractSchedule):
     """ Loans received. """
     highest_balance_choices = ('500-1000', '1001-10000', '10001-100000', '100000+')
@@ -189,6 +188,9 @@ class ScheduleC2(AbstractSchedule):
     interest_rate = DecimalField()
     interest_rate_raw = CharField()
     loan_security = CharField(choices=loan_security_choices)
+    loan_security_real_property_address_city = CharField(null=True, default=None)
+    loan_security_real_property_address_state = CharField(null=True, default=None)
+    loan_security_real_property_address_zip = CharField(null=True, default=None)
     name_of_lender = CharField()
     term = IntegerField()
     term_type = CharField()
