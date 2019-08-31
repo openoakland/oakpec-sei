@@ -24,7 +24,7 @@ test: clean ## Run tests and generate coverage report
 quality: ## Run isort, pycodestyle, and Pylint
 	isort --check-only --recursive .
 	pycodestyle .
-	pylint --rcfile=pylintrc pipeline
+	pylint --rcfile=pylintrc pipeline scripts main.py
 	mypy .
 
 validate: quality test ## Run tests and quality checks
