@@ -17,6 +17,12 @@ def find_and_clean_text(element: ET.Element, path: str) -> Optional[str]:
     return clean_string(element.findtext(path))
 
 
+def _parse_comments(filing: Form700Filing, xml_tree: ET.Element) -> Form700Filing:
+    filing.comments_schedule_b = xml_tree.findtext('comments_schedule_b')
+    filing.comments_schedule_d = xml_tree.findtext('comments_schedule_d')
+    return filing
+
+
 def _parse_cover(filing: Form700Filing, xml_tree: ET.Element) -> Form700Filing:
     filing.filer_id = xml_tree.findtext('filing_information/filer_id')
     report_year = xml_tree.findtext('report_year')
@@ -295,6 +301,7 @@ def parse_filing(filing_id: str, raw_data: str) -> Form700Filing:
     with db.atomic() as transaction:
         try:
             filing = _parse_cover(filing, xml_tree)
+            filing = _parse_comments(filing, xml_tree)
             offices = _parse_offices(filing, xml_tree)
             schedule_a1_attachments = _parse_schedule_a1_attachments(filing, xml_tree)
             schedule_a2_attachments = _parse_schedule_a2_attachments(filing, xml_tree)

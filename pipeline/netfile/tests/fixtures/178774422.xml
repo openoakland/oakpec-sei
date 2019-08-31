@@ -1,0 +1,124 @@
+<disclosure agency="NetFile" type="netfile.render.fppc._2019.RenderableFppc700" version="1.0">
+  <current_page>0</current_page>
+  <hide_signature_names>false</hide_signature_names>
+  <show_blank_pages>false</show_blank_pages>
+  <show_draft>false</show_draft>
+  <show_redacted>true</show_redacted>
+  <report_year>2018</report_year>
+  <total_pages>2</total_pages>
+  <x_position />
+  <y_position />
+  <comments_schedule_b>Spouse is owner</comments_schedule_b>
+  <cover>
+    <first_name>Oliver</first_name>
+    <jurisdiction>
+      <description_city>Oakland</description_city>
+      <is_city>true</is_city>
+      <is_county>false</is_county>
+      <is_judge_or_court>false</is_judge_or_court>
+      <is_multi_county>false</is_multi_county>
+      <is_other>false</is_other>
+      <is_state>false</is_state>
+      <id>097f6fd6-7ae1-4358-b3a0-128a474620de</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </jurisdiction>
+    <last_name>Luby</last_name>
+    <offices count="1">
+      <office>
+        <agency>CITY OF OAKLAND</agency>
+        <assuming_date />
+        <division_board_district>00111  - District One Unit</division_board_district>
+        <election_date />
+        <is_primary>true</is_primary>
+        <leaving_date />
+        <lowest_similarity>100</lowest_similarity>
+        <position>City Council PSE 51 (Chief of Staff)</position>
+        <source>2</source>
+        <id>e75cec0f-c7e2-48a0-8ac6-64f85ee613fe</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </office>
+    </offices>
+    <statement_type>
+      <annual_start_date />
+      <date_assumed />
+      <is_annual>true</is_annual>
+      <is_assuming>false</is_assuming>
+      <is_candidate>false</is_candidate>
+      <is_leaving>false</is_leaving>
+      <leaving_left_office />
+      <leaving_start_date />
+      <candidate_election_date />
+      <id>4bd0984d-ccef-4357-a0e3-b2a2972f1a1a</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </statement_type>
+    <verification>
+      <date_signed>04/01/2019 18:18:08</date_signed>
+      <mailing_address>
+        <city>Oakland</city>
+        <state>CA</state>
+        <zip>94612</zip>
+      </mailing_address>
+      <phone />
+      <signature>Oliver Luby</signature>
+      <id>a74532de-bcc3-494e-a837-a25e6cbd97e9</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </verification>
+    <id>743b6e62-1c97-43db-9b45-6e37b0fe6b94</id>
+    <version_for_add>0</version_for_add>
+    <version_for_delete>0</version_for_delete>
+    <version_for_edit>0</version_for_edit>
+  </cover>
+  <form_tool_hash>1253348</form_tool_hash>
+  <has_loaded_offices_from_admin>true</has_loaded_offices_from_admin>
+  <schedule_a_1s count="0" />
+  <schedule_a_2s count="0" />
+  <schedule_bs count="1">
+    <schedule_b>
+      <city>Oakland</city>
+      <date_acquired />
+      <date_disposed />
+      <fair_market_value>3</fair_market_value>
+      <gross_income_received>3</gross_income_received>
+      <income_sources count="0" />
+      <loan>
+        <address />
+        <has_no_interest_rate>false</has_no_interest_rate>
+        <highest_balance>0</highest_balance>
+        <id>50c713df-985a-4a3d-a911-4bce40e41d5f</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </loan>
+      <nature_of_interest>1</nature_of_interest>
+      <parcel_or_address>245 29th St. #3</parcel_or_address>
+      <id>b9b7eecd-2530-4bb1-ad9b-75bcc2a9837c</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_b>
+  </schedule_bs>
+  <schedule_c_1s count="0" />
+  <schedule_c_2s count="0" />
+  <schedule_ds count="0" />
+  <schedule_es count="0" />
+  <e_filing_as_filing_of_record_allowed>true</e_filing_as_filing_of_record_allowed>
+  <filing_information>
+    <amendment_sequence_number>0</amendment_sequence_number>
+    <amendment_superceded_filing_date>01/01/0001</amendment_superceded_filing_date>
+    <creation_date>01/01/0001 00:00:00</creation_date>
+    <filer_id>COAK-153469</filer_id>
+    <filing_date>01/01/0001</filing_date>
+    <form_tool_hash>1253348</form_tool_hash>
+    <s_a_n>021300008-NFH-0008</s_a_n>
+    <software_name>NetFile Web SEI</software_name>
+    <software_version>2.0</software_version>
+  </filing_information>
+</disclosure>
