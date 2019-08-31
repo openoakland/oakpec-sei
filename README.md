@@ -7,12 +7,14 @@ The data is downloaded from [Netfile](https://netfile.com/Connect2/api/swagger-u
 warehouse.
 
 ## Usage
-The scripts are normally deployed to Google Cloud as cl
+The logic to download and parse filings is normally deployed to Google Cloud as cloud functions.
 
-The script to download all filings, parse them, and store the results resides in `scripts/refresh_form_700_data.py`.
-It can be run with the command below:
+The logic can also be run locally as scripts in the `scripts` directory. `download_form_700_data.py` will download all
+filings to `scripts/filings`. `parse_local_data.py` will extract data from the downloaded files to a SQLite database.
 
-    python -m scripts.refresh_form_700_data
+These scripts can be run with a command like the one below:
+
+    python -m scripts.download_form_700_data
 
 ## Development
 We use [`pipenv`](https://docs.pipenv.org/en/latest/) to manage environments and requirements, so install that first.
