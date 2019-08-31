@@ -70,8 +70,12 @@ class Form700Filing(BaseModel):
     first_name = CharField()
     middle_name = CharField(null=True, default=None)
     last_name = CharField()
+    comments_schedule_a1 = CharField(null=True, default=None)
+    comments_schedule_a2 = CharField(null=True, default=None)
     comments_schedule_b = CharField(null=True, default=None)
+    comments_schedule_c = CharField(null=True, default=None)
     comments_schedule_d = CharField(null=True, default=None)
+    comments_schedule_e = CharField(null=True, default=None)
 
 
 class Office(BaseModel):
@@ -117,6 +121,8 @@ class ScheduleA1(AbstractSchedule):
     partnership_amount = CharField(choices=partnership_amount_choices, null=True)
 
 
+# TODO Parse income sources
+# TODO Parse properties
 class ScheduleA2(AbstractSchedule):
     """ Investments, income, and assets of business entities/trusts. Ownership 10% or greater. """
     fair_market_value_choices = ('0-1999', '2000-10000', '10001-100000', '100001-1000000', '1000000+')

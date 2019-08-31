@@ -18,8 +18,12 @@ def find_and_clean_text(element: ET.Element, path: str) -> Optional[str]:
 
 
 def _parse_comments(filing: Form700Filing, xml_tree: ET.Element) -> Form700Filing:
+    filing.comments_schedule_a1 = xml_tree.findtext('comments_schedule_a1')
+    filing.comments_schedule_a2 = xml_tree.findtext('comments_schedule_a2')
     filing.comments_schedule_b = xml_tree.findtext('comments_schedule_b')
+    filing.comments_schedule_c = xml_tree.findtext('comments_schedule_c')
     filing.comments_schedule_d = xml_tree.findtext('comments_schedule_d')
+    filing.comments_schedule_e = xml_tree.findtext('comments_schedule_e')
     return filing
 
 
