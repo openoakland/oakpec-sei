@@ -1,0 +1,161 @@
+<disclosure agency="NetFile" type="netfile.render.fppc._2019.RenderableFppc700" version="1.0">
+  <current_page>0</current_page>
+  <hide_signature_names>false</hide_signature_names>
+  <show_blank_pages>false</show_blank_pages>
+  <show_draft>false</show_draft>
+  <show_redacted>true</show_redacted>
+  <report_year>2018</report_year>
+  <total_pages>2</total_pages>
+  <x_position />
+  <y_position />
+  <cover>
+    <first_name>Jennifer</first_name>
+    <jurisdiction>
+      <description_city>Oakland</description_city>
+      <is_city>true</is_city>
+      <is_county>false</is_county>
+      <is_judge_or_court>false</is_judge_or_court>
+      <is_multi_county>false</is_multi_county>
+      <is_other>false</is_other>
+      <is_state>false</is_state>
+      <id>72fccfa0-2a2b-41ac-9a9c-0d4029601570</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </jurisdiction>
+    <last_name>Stanley</last_name>
+    <offices count="1">
+      <office>
+        <agency>CITY OF OAKLAND</agency>
+        <assuming_date />
+        <division_board_district>35245 - Bicycle &amp; Pedestrian Program</division_board_district>
+        <election_date />
+        <is_primary>true</is_primary>
+        <leaving_date />
+        <lowest_similarity>100</lowest_similarity>
+        <position>Program Analyst II</position>
+        <source>0</source>
+        <id>87333239-68f9-42ee-ae61-68055d2098a8</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </office>
+    </offices>
+    <statement_type>
+      <annual_start_date />
+      <date_assumed />
+      <is_annual>true</is_annual>
+      <is_assuming>false</is_assuming>
+      <is_candidate>false</is_candidate>
+      <is_leaving>false</is_leaving>
+      <leaving_left_office />
+      <leaving_start_date />
+      <candidate_election_date />
+      <id>7e89dfeb-d3dd-431c-86bc-09493a57cb97</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </statement_type>
+    <verification>
+      <date_signed>03/19/2019 14:54:17</date_signed>
+      <mailing_address>
+        <city>Oakland</city>
+        <state>CA</state>
+        <zip>94612</zip>
+      </mailing_address>
+      <phone />
+      <signature>Jennifer Stanley</signature>
+      <id>eae3854f-e52c-4905-9d66-4a8fe432542f</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </verification>
+    <id>1e193632-39cc-46f6-a06d-ea6bfe8b40cc</id>
+    <version_for_add>0</version_for_add>
+    <version_for_delete>0</version_for_delete>
+    <version_for_edit>0</version_for_edit>
+  </cover>
+  <form_tool_hash>1243873</form_tool_hash>
+  <has_loaded_offices_from_admin>true</has_loaded_offices_from_admin>
+  <schedule_a_1s count="0" />
+  <schedule_a_2s count="0" />
+  <schedule_bs count="2">
+    <schedule_b>
+      <city>Oakland, CA 94609</city>
+      <date_acquired />
+      <date_disposed />
+      <fair_market_value>3</fair_market_value>
+      <gross_income_received>4</gross_income_received>
+      <income_sources count="0" />
+      <loan>
+        <address />
+        <has_no_interest_rate>true</has_no_interest_rate>
+        <highest_balance>0</highest_balance>
+        <id>4b169b12-d863-46d3-bb38-50f081a304d3</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </loan>
+      <nature_of_interest>1</nature_of_interest>
+      <parcel_or_address>012-0972-025</parcel_or_address>
+      <id>984ba047-e2ab-425e-9240-c2a163056638</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_b>
+    <schedule_b>
+      <city>Oakland</city>
+      <date_acquired />
+      <date_disposed />
+      <fair_market_value>3</fair_market_value>
+      <gross_income_received>4</gross_income_received>
+      <income_sources count="2">
+        <source>
+          <name>Name(s) redacted</name>
+          <id>826f6f85-21ca-4a57-9884-751e21f88dcf</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </source>
+        <source>
+          <name> </name>
+          <id>4cc13eeb-7232-489f-b00f-d9edaba4aec2</id>
+          <version_for_add>0</version_for_add>
+          <version_for_delete>0</version_for_delete>
+          <version_for_edit>0</version_for_edit>
+        </source>
+      </income_sources>
+      <loan>
+        <address />
+        <has_no_interest_rate>false</has_no_interest_rate>
+        <highest_balance>0</highest_balance>
+        <id>ff3967b9-ed22-4218-83e6-ebabf540d461</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </loan>
+      <nature_of_interest>1</nature_of_interest>
+      <parcel_or_address>012-0972-025</parcel_or_address>
+      <id>3660b979-ef3e-472e-8e65-e103b520e3c8</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_b>
+  </schedule_bs>
+  <schedule_c_1s count="0" />
+  <schedule_c_2s count="0" />
+  <schedule_ds count="0" />
+  <schedule_es count="0" />
+  <e_filing_as_filing_of_record_allowed>true</e_filing_as_filing_of_record_allowed>
+  <filing_information>
+    <amendment_sequence_number>0</amendment_sequence_number>
+    <amendment_superceded_filing_date>01/01/0001</amendment_superceded_filing_date>
+    <creation_date>01/01/0001 00:00:00</creation_date>
+    <filer_id>COAK-153173</filer_id>
+    <filing_date>01/01/0001</filing_date>
+    <form_tool_hash>1243873</form_tool_hash>
+    <s_a_n>021300008-NFH-0008</s_a_n>
+    <software_name>NetFile Web SEI</software_name>
+    <software_version>2.0</software_version>
+  </filing_information>
+</disclosure>

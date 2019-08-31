@@ -6,8 +6,8 @@ from uuid import UUID
 import pytest
 
 from ..models import (
-    Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleC1, ScheduleC2, ScheduleD, ScheduleDGift,
-    ScheduleE
+    Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleBIncomeSource, ScheduleC1, ScheduleC2, ScheduleD,
+    ScheduleDGift, ScheduleE
 )
 from ..parsers import parse_filing
 from ..utils import TIMEZONE
@@ -158,6 +158,29 @@ def test_parse_schedule_b():
         gross_income_received='1001-10000',
         nature_of_interest='ownership',
         parcel_or_address='865 29th Street',
+    )
+
+
+@pytest.mark.usefixtures("reset_database")
+def test_parse_schedule_b_income_sources():
+    _parse_filing('178069526')
+
+    schedule_b_attachments = ScheduleB.select()
+    assert len(schedule_b_attachments) == 2
+
+    schedule = schedule_b_attachments[1]
+    income_sources = schedule.income_sources
+    assert len(income_sources) == 2
+
+    assert income_sources[0] == ScheduleBIncomeSource(
+        id=UUID('826f6f85-21ca-4a57-9884-751e21f88dcf'),
+        schedule=schedule,
+        name='Name(s) redacted'
+    )
+    assert income_sources[1] == ScheduleBIncomeSource(
+        id=UUID('4cc13eeb-7232-489f-b00f-d9edaba4aec2'),
+        schedule=schedule,
+        name=''
     )
 
 
