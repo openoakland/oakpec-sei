@@ -18,26 +18,30 @@ def find_and_clean_text(element: ET.Element, path: str) -> Optional[str]:
 
 
 def _parse_comments(filing: Form700Filing, xml_tree: ET.Element) -> Form700Filing:
-    filing.comments_schedule_a1 = xml_tree.findtext('comments_schedule_a1')
-    filing.comments_schedule_a2 = xml_tree.findtext('comments_schedule_a2')
-    filing.comments_schedule_b = xml_tree.findtext('comments_schedule_b')
-    filing.comments_schedule_c = xml_tree.findtext('comments_schedule_c')
-    filing.comments_schedule_d = xml_tree.findtext('comments_schedule_d')
-    filing.comments_schedule_e = xml_tree.findtext('comments_schedule_e')
+    filing.comments_schedule_a1 = find_and_clean_text(xml_tree, 'comments_schedule_a1')
+    filing.comments_schedule_a2 = find_and_clean_text(xml_tree, 'comments_schedule_a2')
+    filing.comments_schedule_b = find_and_clean_text(xml_tree, 'comments_schedule_b')
+    filing.comments_schedule_c = find_and_clean_text(xml_tree, 'comments_schedule_c')
+    filing.comments_schedule_d = find_and_clean_text(xml_tree, 'comments_schedule_d')
+    filing.comments_schedule_e = find_and_clean_text(xml_tree, 'comments_schedule_e')
     return filing
 
 
 def _parse_cover(filing: Form700Filing, xml_tree: ET.Element) -> Form700Filing:
-    filing.filer_id = xml_tree.findtext('filing_information/filer_id')
-    report_year = xml_tree.findtext('report_year')
+    filing.filer_id = find_and_clean_text(xml_tree, 'filing_information/filer_id')
+    report_year = find_and_clean_text(xml_tree, 'report_year')
     assert report_year
     filing.report_year = int(report_year)
 
+    # NOTE: This is a small hack. `amends` is a foreign key, but peewee allows the ID to be set rather than
+    # the related instance.
+    filing.amends = find_and_clean_text(xml_tree, 'filing_information/amendment_superceded_filing_id')
+
     cover = xml_tree.find('cover')
     assert isinstance(cover, ET.Element)
-    filing.first_name = cover.findtext('first_name')
-    filing.last_name = cover.findtext('last_name')
-    filing.date_signed = clean_datetime(cover.findtext('verification/date_signed'))
+    filing.first_name = find_and_clean_text(cover, 'first_name')
+    filing.last_name = find_and_clean_text(cover, 'last_name')
+    filing.date_signed = clean_datetime(find_and_clean_text(cover, 'verification/date_signed'))
 
     return filing
 

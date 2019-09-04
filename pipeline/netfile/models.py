@@ -66,6 +66,7 @@ class Form700Filing(BaseModel):
     id = CharField(primary_key=True)
     report_year = IntegerField()
     filer_id = CharField()
+    amends = ForeignKeyField('self', null=True, default=None, backref='amendments')
     date_signed = TimestampField(utc=True, default=None)
     first_name = CharField()
     middle_name = CharField(null=True, default=None)

@@ -1,0 +1,626 @@
+<disclosure agency="NetFile" type="netfile.render.fppc._2019.RenderableFppc700" version="1.0">
+  <current_page>0</current_page>
+  <hide_signature_names>false</hide_signature_names>
+  <show_blank_pages>false</show_blank_pages>
+  <show_draft>false</show_draft>
+  <show_redacted>true</show_redacted>
+  <report_year>2018</report_year>
+  <total_pages>9</total_pages>
+  <x_position />
+  <y_position />
+  <cover>
+    <first_name>Adhi</first_name>
+    <jurisdiction>
+      <description_city>Oakland</description_city>
+      <is_city>true</is_city>
+      <is_county>false</is_county>
+      <is_judge_or_court>false</is_judge_or_court>
+      <is_multi_county>false</is_multi_county>
+      <is_other>false</is_other>
+      <is_state>false</is_state>
+      <id>e477f412-280e-45d0-a569-c911473c318b</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>1</version_for_edit>
+    </jurisdiction>
+    <last_name>Nagraj</last_name>
+    <offices count="2">
+      <office>
+        <agency>California Housing Partnership Corporation</agency>
+        <assuming_date>08/02/2013 00:00:00</assuming_date>
+        <division_board_district>Planning Commission</division_board_district>
+        <election_date />
+        <is_primary>false</is_primary>
+        <leaving_date>03/21/2018 00:00:00</leaving_date>
+        <lowest_similarity>0</lowest_similarity>
+        <position>Commissioner</position>
+        <source>1</source>
+        <id>a4d4abb2-cdc3-4830-b264-90625fbe6c39</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>1</version_for_delete>
+        <version_for_edit>1</version_for_edit>
+      </office>
+      <office>
+        <agency>City of Oakland</agency>
+        <assuming_date>08/02/2013 00:00:00</assuming_date>
+        <division_board_district>Planning Commission</division_board_district>
+        <election_date />
+        <is_primary>false</is_primary>
+        <leaving_date>03/21/2018 00:00:00</leaving_date>
+        <lowest_similarity>2</lowest_similarity>
+        <position>Commissioner</position>
+        <source>1</source>
+        <id>ae92ac6a-546e-40a3-bb33-325ce08b3cf8</id>
+        <version_for_add>1</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </office>
+    </offices>
+    <statement_type>
+      <annual_start_date />
+      <date_assumed />
+      <is_annual>true</is_annual>
+      <is_assuming>false</is_assuming>
+      <is_candidate>false</is_candidate>
+      <is_leaving>false</is_leaving>
+      <leaving_left_office />
+      <leaving_start_date />
+      <candidate_election_date />
+      <id>41705885-951b-4591-b649-7cebaec96383</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </statement_type>
+    <verification>
+      <date_signed>07/14/2019 12:05:47</date_signed>
+      <mailing_address>
+        <city>Emeryville</city>
+        <state>CA</state>
+        <zip>94662</zip>
+      </mailing_address>
+      <phone />
+      <signature>Adhi Nagraj</signature>
+      <id>5584e28b-908e-4019-8478-5ec9a877af33</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </verification>
+    <id>a5e0d8a9-42df-4b53-9e0f-49548f3927e3</id>
+    <version_for_add>0</version_for_add>
+    <version_for_delete>0</version_for_delete>
+    <version_for_edit>1</version_for_edit>
+  </cover>
+  <form_tool_hash>1260381</form_tool_hash>
+  <has_loaded_offices_from_admin>true</has_loaded_offices_from_admin>
+  <schedule_a_1s count="35">
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Wholesale</description>
+      <fair_market_value>1</fair_market_value>
+      <name_of_business_entity>Costco</name_of_business_entity>
+      <nature_of_investment>1</nature_of_investment>
+      <partnership_amount>0</partnership_amount>
+      <id>f9ca66e5-598e-4916-a58d-d0a73f2d6808</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Finance</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>JP Morgan</name_of_business_entity>
+      <nature_of_investment>1</nature_of_investment>
+      <partnership_amount>0</partnership_amount>
+      <id>5849779b-4884-476c-b68b-90f17fdbb8d8</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Pharmaceuticals</description>
+      <fair_market_value>1</fair_market_value>
+      <name_of_business_entity>McKesson</name_of_business_entity>
+      <nature_of_investment>1</nature_of_investment>
+      <partnership_amount>0</partnership_amount>
+      <id>f8f3fe28-935e-4a71-b938-fe49709ef872</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Apparel</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>Nike</name_of_business_entity>
+      <nature_of_investment>1</nature_of_investment>
+      <partnership_amount>0</partnership_amount>
+      <id>0f9bb2e2-2c4f-4189-8e74-ba43a29669a6</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Commodity ETF</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>BCI</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>a13ec27e-796d-4392-aed3-472ecc5236e3</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Energy</description>
+      <fair_market_value>1</fair_market_value>
+      <name_of_business_entity>XLE</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>d5b8e8b2-a271-4212-8b4f-dab8442e3de0</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Health Care</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>FHLC</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>5edde1b1-9a0a-434c-b899-f5afee7e6213</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Gold</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>IAU</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>856fc0cb-172d-4448-a9f7-a2e8d8903dec</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>International</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>EFA</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>438e4226-05c5-4cc2-bb0c-e579c7777682</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Small Cap</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>SCZ</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>9c9c37b1-ce2a-474a-b4fc-1495b4b0eca1</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Emerging Markets</description>
+      <fair_market_value>1</fair_market_value>
+      <name_of_business_entity>EEMA</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>452828df-4eed-4adc-a055-ca3e2bfe4204</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Small Cap</description>
+      <fair_market_value>1</fair_market_value>
+      <name_of_business_entity>IWM</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>7a195388-3708-443d-8382-7f9913dcd49e</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Energy</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>XLB</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>8bdf2288-8068-475b-aff2-882269587b73</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Technology</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>XLK</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>bb7e5c7d-86ca-4308-9c7b-3f04235296a4</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Short term bonds</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>FLTR</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>f88e8d15-50be-4478-93cf-a9f8b5c3cf8b</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Finance</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>EMLC</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>2a7ddc58-b5ca-4ce8-bab0-6155fe1c3871</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Dividends</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>VIG</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>03d9a9b4-c5f9-482a-b3f6-94b0366a06d8</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Index Funds</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>VEA</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>e590809b-53ce-48f8-9102-f187d2b371ec</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Emerging Markets</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>VWO</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>27591c36-f9f8-4928-95af-942fb1f3a4da</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Real Estate</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>VNQI</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>a82868e2-9e10-4f3d-a7c3-c9a506cc0533</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Short term treasury</description>
+      <fair_market_value>1</fair_market_value>
+      <name_of_business_entity>VGSH</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>ETF</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>1956cefd-fed3-4ceb-a446-944b2d1217e2</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>International Fund</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>BCTIX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>89d57464-2ac9-412a-aa07-74f3a89d44aa</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Emerging Markets</description>
+      <fair_market_value>1</fair_market_value>
+      <name_of_business_entity>ESFAX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>9a7c6b93-c38f-48ca-81d6-87dba296ee61</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Commodity</description>
+      <fair_market_value>1</fair_market_value>
+      <name_of_business_entity>SKIRX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>f4ca9a42-150c-4ef3-959b-094259394f14</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>New Markets Futures</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>FNMIX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>4ffc1200-7ad9-4824-b381-59c6bbd7fe86</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Small Cap</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>GABSX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>a9ee3c0b-bcce-4909-8fa8-48b2896197f0</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>International</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>MIPTX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>c431dbc3-da08-43c1-b92e-67c7c6a358fd</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>International</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>OAYIX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>fc257190-831b-4772-ab87-6e8903139ea6</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>International</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>OSMIX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>129f2b18-3814-4e08-a90a-bc7f7f0f9ff5</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>High Yield Fund</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>PHYZX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>cb09a76f-87bc-48d8-8852-344d51ddaebd</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Bonds</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>PIMIX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>8b6c293a-c826-4c74-9250-6edc6f4bcd4f</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Corporate futures</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>VWEAX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>d5165d73-8ffb-42e2-bf78-1ca2e0252f95</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>International</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>VINEX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>70ab047d-219b-4509-85f4-40921cf2c235</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Short term fund</description>
+      <fair_market_value>2</fair_market_value>
+      <name_of_business_entity>VFSUX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>d26d959b-dad7-44f2-a335-646cb28ed54a</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+    <schedule_a_1>
+      <date_acquired />
+      <date_disposed />
+      <description>Short term treasury</description>
+      <fair_market_value>1</fair_market_value>
+      <name_of_business_entity>VFIRX</name_of_business_entity>
+      <nature_of_investment>2</nature_of_investment>
+      <nature_of_investment_other_description>Mutual Fund</nature_of_investment_other_description>
+      <partnership_amount>0</partnership_amount>
+      <id>660c3137-d4f2-4568-ad4e-57f430914179</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_a_1>
+  </schedule_a_1s>
+  <schedule_a_2s count="0" />
+  <schedule_bs count="1">
+    <schedule_b>
+      <city>Oakland</city>
+      <date_acquired />
+      <date_disposed />
+      <fair_market_value>3</fair_market_value>
+      <gross_income_received>0</gross_income_received>
+      <income_sources count="0" />
+      <loan>
+        <address />
+        <has_no_interest_rate>true</has_no_interest_rate>
+        <highest_balance>0</highest_balance>
+        <id>9ab3578d-fa4f-4595-9200-ecc142869977</id>
+        <version_for_add>0</version_for_add>
+        <version_for_delete>0</version_for_delete>
+        <version_for_edit>0</version_for_edit>
+      </loan>
+      <nature_of_interest>1</nature_of_interest>
+      <parcel_or_address>986 Arlington Avenue</parcel_or_address>
+      <id>d4c91bec-bf04-4cbe-b245-ec32024b9cf9</id>
+      <version_for_add>0</version_for_add>
+      <version_for_delete>0</version_for_delete>
+      <version_for_edit>0</version_for_edit>
+    </schedule_b>
+  </schedule_bs>
+  <schedule_c_1s count="0" />
+  <schedule_c_2s count="0" />
+  <schedule_ds count="0" />
+  <schedule_es count="0" />
+  <e_filing_as_filing_of_record_allowed>true</e_filing_as_filing_of_record_allowed>
+  <filing_information>
+    <amendment_sequence_number>1</amendment_sequence_number>
+    <amendment_superceded_filing_date>01/01/0001</amendment_superceded_filing_date>
+    <amendment_superceded_filing_id>177692551</amendment_superceded_filing_id>
+    <creation_date>01/01/0001 00:00:00</creation_date>
+    <filer_id>COAK-152132</filer_id>
+    <filing_date>01/01/0001</filing_date>
+    <form_tool_hash>1260381</form_tool_hash>
+    <s_a_n>021300008-NFH-0008</s_a_n>
+    <software_name>NetFile Web SEI</software_name>
+    <software_version>2.0</software_version>
+  </filing_information>
+</disclosure>
