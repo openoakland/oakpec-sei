@@ -25,13 +25,7 @@ def read_filing(filing_id: str):
 def _parse_filing(filing_id: str):
     raw_xml = read_filing(filing_id)
     parse_filing(filing_id, raw_xml)
-    filings = Form700Filing.select()
-    assert len(filings) == 1
-
-    filing = filings[0]
-    assert filing.id == filing_id
-
-    return filing
+    return Form700Filing.get_by_id(filing_id)
 
 
 @pytest.mark.usefixtures("reset_database")
@@ -83,6 +77,14 @@ def test_parse_filing():
         nature_of_investment_other_description=None,
         partnership_amount=None
     )
+
+
+@pytest.mark.usefixtures("reset_database")
+def test_parse_filing_amendments():
+    filing = _parse_filing('177692551')
+    amendment = _parse_filing('181517263')
+
+    assert amendment.amends == filing
 
 
 @pytest.mark.usefixtures("reset_database")
