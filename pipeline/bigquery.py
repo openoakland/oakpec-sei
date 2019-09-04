@@ -7,8 +7,8 @@ from google.cloud.exceptions import GoogleCloudError
 from peewee import Field, Model
 
 from .netfile.models import (
-    Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleBIncomeSource, ScheduleC1, ScheduleC2, ScheduleD,
-    ScheduleDGift, ScheduleE
+    Form700Filing, Office, ScheduleA1, ScheduleA2, ScheduleB, ScheduleBIncomeSource, ScheduleC1, ScheduleC1IncomeSource,
+    ScheduleC2, ScheduleD, ScheduleDGift, ScheduleE
 )
 
 logger = logging.getLogger(__name__)
@@ -70,6 +70,9 @@ def _refresh_table_data(table_id: str, schema: List[bigquery.SchemaField], sourc
 
 
 def _get_type_for_field(field: Field) -> str:
+    if field.__class__.__name__ == 'TimestampField':
+        return 'TIMESTAMP'
+
     field_type = field.field_type
     return {
         'auto': 'INT64',
@@ -92,7 +95,7 @@ def _get_schema_for_model(model: Model) -> List[bigquery.SchemaField]:
     return [_get_schema_for_field(field) for field in model._meta.sorted_fields]  # pylint: disable=protected-access
 
 
-def _get_table_id_for_model(model: Model) -> str:
+def get_table_id_for_model(model: Model) -> str:
     return {
         Form700Filing: 'filings',
         Office: 'offices',
@@ -101,6 +104,7 @@ def _get_table_id_for_model(model: Model) -> str:
         ScheduleB: 'schedule_b_attachments',
         ScheduleBIncomeSource: 'schedule_b_income_sources',
         ScheduleC1: 'schedule_c1_attachments',
+        ScheduleC1IncomeSource: 'schedule_c1_income_sources',
         ScheduleC2: 'schedule_c2_attachments',
         ScheduleD: 'schedule_d_attachments',
         ScheduleDGift: 'schedule_d_gifts',
@@ -112,5 +116,5 @@ def refresh_model_data(model: Model, data: io.StringIO) -> None:
     data.seek(0)
     source_file = _stringio2bytesio(data)
     schema = _get_schema_for_model(model)
-    table_id = _get_table_id_for_model(model)
+    table_id = get_table_id_for_model(model)
     _refresh_table_data(table_id, schema, source_file)
