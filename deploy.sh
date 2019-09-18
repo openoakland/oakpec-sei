@@ -17,6 +17,19 @@ gcloud functions deploy \
     --trigger-topic=download-all-filings \
     --timeout=120
 
+# Create job to refresh the data every 12 hours
+gcloud beta scheduler jobs delete \
+    download-all-filings-254 \
+    --quiet
+
+gcloud beta scheduler jobs create pubsub \
+    download-all-filings-254 \
+    --topic=download-all-filings \
+    --schedule="0 0,12 * * *" \
+    --message-body="IGNORE-ME" \
+    --attributes="form_type=254" \
+    --quiet
+
 # Deploy function to download files
 gcloud functions deploy \
     download-netfile-filing \
